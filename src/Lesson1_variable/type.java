@@ -21,7 +21,8 @@ public class type {
         String fullname ="Le Thi Thanh Hang";
 
         //ọbject
-        type name = new type();
+        Student name = new Student();
+        type func = new type();
 
         System.out.println("The number is " +number);
         System.out.println(a + " " +b +" " +c);
@@ -31,6 +32,10 @@ public class type {
         System.out.println(f1 + d1);
         System.out.println("My fullname is "+fullname);
         System.out.println(name);
+        System.out.println(func);
+
+    };
+    public static class Student {
 
     }
 
