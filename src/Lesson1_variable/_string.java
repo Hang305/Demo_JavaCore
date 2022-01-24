@@ -10,19 +10,27 @@ public class _string {
 
         //length
         System.out.println(str.length());
+
         //toUppercase
         System.out.println(str.toUpperCase());
+
         //to Lowercase
         System.out.println(str.toLowerCase());
+
         //Return index start of text
-        System.out.println(str.indexOf("world"));
+        System.out.println(str.indexOf("o"));
+        System.out.println(str.lastIndexOf("o"));
+
         System.out.println(fullname + " " + firstname);
 
         System.out.println("Le Thi Thanh \'Hang\'");
         System.out.println("Le Thi Thanh \tHang\'");
         System.out.println("Le Thi Thanh \bHang\'");
         System.out.println("Le Thi Thanh \nHang\'");
+
         System.out.println(fullname+firstname);
+        //or
+        System.out.println(fullname.concat(firstname));
 
     }
 }
