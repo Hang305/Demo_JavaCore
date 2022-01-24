@@ -12,7 +12,7 @@ public class operate {
         System.out.println(a+=1);
 
         System.out.println(9==8);
-
+        //toán tử bit
         System.out.println((char)('A'|' '));
     }
 }
