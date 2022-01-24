@@ -2,7 +2,7 @@ package Lesson1_variable;
 
 public class type {
 
-    public static void main(String[] args) {
+    public static void main(_string[] args) {
 
         //int
         int number = 912472758;

@@ -2,7 +2,7 @@ package Lesson1_variable;
 
 public class variable {
 
-    public static void main(String[] args) {
+    public static void main(_string[] args) {
 
         String name = "Le Thi Thanh Hang";
         int yearofBirth = 2000;
