@@ -32,5 +32,12 @@ public class _string {
         //or
         System.out.println(fullname.concat(firstname));
 
+        int x=10;
+        int y=20;
+        System.out.println(x+y);
+
+        String a = "10";
+        String b = "20";
+        System.out.println(a+b);
     }
 }
