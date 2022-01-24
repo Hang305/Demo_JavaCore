@@ -1,6 +1,6 @@
 package Lesson1_variable;
 
-public class operate {
+public class operator {
 
     public static void main(String[] args) {
 
