@@ -19,10 +19,18 @@ public class Statement_Array {
 
             System.out.print(days[i]  + " ");
         }
+        System.out.print("\n");
 
         int[][] myNumbers = { {1, 2, 3, 4}, {5, 6, 7} };
+
+        System.out.println("Total length of myNumber:" + myNumbers.length);
+
         for (int i = 0; i < myNumbers.length; ++i) {
+
+            System.out.println("Total " + myNumbers[i].length);
+
             for(int j = 0; j < myNumbers[i].length; ++j) {
+
                 System.out.println(myNumbers[i][j]);
             }
         }
