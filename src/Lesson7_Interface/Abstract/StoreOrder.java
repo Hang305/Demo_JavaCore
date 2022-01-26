@@ -1,4 +1,4 @@
-package Lesson7_Interface;
+package Lesson7_Interface.Abstract;
 
 public class StoreOrder extends Order {
     @Override
