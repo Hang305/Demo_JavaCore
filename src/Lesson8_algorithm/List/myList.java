@@ -7,7 +7,7 @@ public class myList {
 
     public static void main(String[] args) {
 
-        ArrayList<String> students = new ArrayList<String>();
+        List<String> students = new ArrayList<String>();
 
         //add
         //addAll(): thêm các phần tử từ collection có sẵn
