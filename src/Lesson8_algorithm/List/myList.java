@@ -11,6 +11,7 @@ public class myList {
 
         //add
         //addAll(): thêm các phần tử từ collection có sẵn
+
         students.add("Name");
         System.out.println(students);
 
