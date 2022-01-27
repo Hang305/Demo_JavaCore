@@ -69,6 +69,8 @@ public class myList {
         //asList(): chuyển Array thành ArrayList
         String[] ars = {"Thanh","Hang"};
 
+        List<Integer> iter= new ArrayList<>();
+
 
         //clear(): xóa toàn bộ phần tử trong tập hợp
     }
