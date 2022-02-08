@@ -1,4 +1,5 @@
 #Sự khác nhau trong Collection
+
 ###Set: 
 Là Tập hợp với mỗi dữ liệu bên trong chỉ xuất hiện duy nhất một lần, không trùng nhau, tập hợp chưa được sắp xếp
 ####TreeSet:
@@ -7,6 +8,7 @@ Sử dụng một tree cho lưu giữ. Các đối tượng được lưu trữ 
 Là một class implement Set Interface, mà các phần tử được lưu trữ dưới dạng BẢNG BĂM (Các mã số duy nhât - KHÔNG TRÙNG LẶP)
 ####EnumSet
 Là một class như 2 class trên, tuy nhiên khác 2 class trên là các phần tử trong set là các ENUM chứ không phải object
+
 ###List (danh sách): 
 Là cấu trúc dữ liệu tuyến tính trong đó các phần tử được sắp xếp theo một thứ tự xác định. Cho phép các phần tử được TRÙNG LẶP NHAU
 ####ArrayList: 
@@ -17,6 +19,7 @@ Là một class dạng list hoạt động trên cơ sở của cấu trúc dữ
 Giống ArrayList nhưng Vector là sysnchronized - đồng bộ, có thể hoạt động đa luồng mà không cần gọi synchronize một cách tường minh.
 ####Stack: 
 Hoạt động dựa trên cơ sở của cấu trúc dữ liệu ngăn xếp (Stack) với kiểu LIFO
+
 ###Map (Đồ thị/ánh xạ)
 Là kiểu dữ liệu cho phép ta quản lý dữ liệu theo cặp KEY-VALUE, trong đó KEY LÀ DUY NHẤT và tương ứng với 1 key là một giá trị value.
 Map Interface không kế thừa từ Collection Interface mà đây là một interface độc lập với các phương thức của riêng mình.
@@ -36,8 +39,10 @@ Là một class dạng list hoạt động trên cơ sở của cấu trúc dữ
 Là một dạng queue mà trong đó các phần tử trong queue sẽ được sắp xếp
 ####ArrayDeque (Deque: queue 2 chiều):
 Là một dạng deque (queue 2 chiều) được implement dựa trên mảng
+
 ###Stack (Ngăn xếp) - LILO
 Là kiểu dữ liệu nổi tiếng với kiểu vào ra LILO (Last in last out - vào sau ra trước)
+
 ##Performance Big O - "Độ phức tạp của thuật toán"
 Dùng để chỉ khoảng thời gian tiêu hao để chạy một thuật toán. Sử dụng Big O như một phương tiện để so sánh mức độ hiệu quả của nhiều cách xử lý khác nhau cho cùng một vấn đề.
 Thời gian chạy nhanh như thế nào, còn tùy thuộc vào giá trị vào (input) vì giá trị input lớn dần lên khi chương trình chạy
