@@ -1,5 +1,5 @@
 # Generic
-####Generic là viết các phương thức và lớp để tái sử dụng cho các đối tượng thuộc các kiểu dữ liệu khác nhau (Kiểu dữ liệu như Person, Car, Student, Hotel...)
+#### Generic là viết các phương thức và lớp để tái sử dụng cho các đối tượng thuộc các kiểu dữ liệu khác nhau (Kiểu dữ liệu như Person, Car, Student, Hotel...)
 Generics là cơ chế cho phép sử dụng KIỂU DỮ LIỆU NHƯ LÀ THAM SỐ (Tham số hóa kiểu dữ liệu)
 - Co phép chúng ta tạo ra các Class, method, interface hoạt động với nhiều kiểu dữ liệu khác nhau
 #### Non - Generics
