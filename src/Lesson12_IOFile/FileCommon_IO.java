@@ -7,6 +7,8 @@ import java.util.List;
 public class FileCommon_IO {
 
     //Input
+    //true: remain file and add data into the final file.
+    //false: default : create a new file and override old file
     public static void writeFile(String pathFile, String line){
 
         File file;
