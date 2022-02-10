@@ -11,4 +11,3 @@
 - Trình biên dịch và thực hiện mã bytecode ra mã máy (biên dịch line by line) chạy
 ## Quá trình thực thi file Java
 - Java program -> Java Compiler -> Java Interpreter -> Computer
-- 
