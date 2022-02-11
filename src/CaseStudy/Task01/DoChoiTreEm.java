@@ -74,4 +74,13 @@ public class DoChoiTreEm extends SanPham{
         HuongDanSuDung = huongDanSuDung;
     }
 
+    @Override
+    public String toString() {
+        return "DoChoiTreEm{" +
+                "XuatXu='" + XuatXu + '\'' +
+                ", ThuongHieu='" + ThuongHieu + '\'' +
+                ", NhaCungCap='" + NhaCungCap + '\'' +
+                ", HuongDanSuDung='" + HuongDanSuDung + '\'' +
+                '}';
+    }
 }

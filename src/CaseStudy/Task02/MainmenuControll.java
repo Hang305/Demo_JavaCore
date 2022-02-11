@@ -4,18 +4,21 @@ import java.util.Scanner;
 
 public class MainmenuControll {
 
-
-    Scanner scan = new Scanner(System.in);
+    static String LoaiSP;
+//    public static void main(String[] args) {
+//        System.out.println("Nhập tên loại sản phẩm muốn thêm vào: ");
+//        Scanner scan = new Scanner(System.in);
+//        LoaiSP = scan.nextLine();
+//
+//        addSanPham themSP = new addSanPham();
+//        System.out.println(LoaiSP);
+//    }
+//    Scanner scan = new Scanner(System.in);
 //    String name = scan.nextString();
     
-    public void Add(){
+    public void ThemSanPham(){
 
-//        switch (khachhang){
-//            case "VIP1":
-//                return 0.05;
-//            case "VIP2":
-//                return 0.1;
-//            default: return 0.02;
-//        }
     }
+
+
 }

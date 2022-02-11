@@ -103,4 +103,17 @@ public class DoDungHocTap extends SanPham{
     public void setKichThuoc(String kichThuoc) {
         KichThuoc = kichThuoc;
     }
+
+    @Override
+    public String toString() {
+        return "DoDungHocTap{" +
+                "XuatXu='" + XuatXu + '\'' +
+                ", ThuongHieu='" + ThuongHieu + '\'' +
+                ", NhaCungCap='" + NhaCungCap + '\'' +
+                ", HuongDanSuDung='" + HuongDanSuDung + '\'' +
+                ", MauSac='" + MauSac + '\'' +
+                ", ChatLieu='" + ChatLieu + '\'' +
+                ", KichThuoc='" + KichThuoc + '\'' +
+                '}';
+    }
 }

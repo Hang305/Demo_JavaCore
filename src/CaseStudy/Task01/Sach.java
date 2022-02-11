@@ -84,4 +84,15 @@ public class Sach extends SanPham{
     public void setLanTaiBan(String lanTaiBan) {
         LanTaiBan = lanTaiBan;
     }
+
+    @Override
+    public String toString() {
+        return "Sach{" +
+                "NhaXuatBan='" + NhaXuatBan + '\'' +
+                ", NamXuatBan=" + NamXuatBan +
+                ", TacGia='" + TacGia + '\'' +
+                ", NgayXuatBan=" + NgayXuatBan +
+                ", LanTaiBan='" + LanTaiBan + '\'' +
+                '}';
+    }
 }

@@ -10,19 +10,18 @@ public class KhachHang {
     private String HoTen;
     private String SDT;
     private String Email;
-    private Date NgaySinh;
-    private List<String> LoaiKH;
+    private String NgaySinh;
+    private String LoaiKH;
 
-    public List<String> getLoaiKH() {
+    public String getLoaiKH() {
         return LoaiKH;
     }
 
-
-    public void setLoaiKH(List<String> loaiKH) {
+    public void setLoaiKH(String loaiKH) {
         LoaiKH = loaiKH;
     }
 
-    public KhachHang(String maKH, String hoTen, String SDT, String email, Date ngaySinh, List<String> loaiKH) {
+    public KhachHang(String maKH, String hoTen, String SDT, String email, String ngaySinh, String loaiKH) {
         MaKH = maKH;
         HoTen = hoTen;
         this.SDT = SDT;
@@ -64,11 +63,11 @@ public class KhachHang {
         Email = email;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return NgaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         NgaySinh = ngaySinh;
     }
 }
