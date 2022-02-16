@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Read_Write {
 
-
     //INPUT
     public static void writeFile(String pathFile, String line) {
         try {

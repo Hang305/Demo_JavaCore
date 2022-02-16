@@ -18,6 +18,11 @@
 - Tính trừu tượng cho phép loại bỏ tính chất phức tạp của đối tượng bằng cách chỉ đưa ra các thuộc tính và phương thức cần thiết của đối tượng trong lập trình
 - Tập trung vào cốt lõi thay vì quan tâm đến cách nó thực hiện
 - Áp dụng trừu tượng bằng cách **sử dụng abstract class và interface**
+### Abstracted class
+- Một abstract class phải chứa ít nhất một hay nhiều method trừu tượng
+- Một method trừu tượng là một method không có triển khai (Không có dấu ngoặc nhọn và kết thức là một dấu chấm phẩy)
+- Một abstract class không thể tạo đối tượng nhưng có thể bao gồm lớp con.
+- 
 ## Đóng gói (Encapsulation)
 - Tính chất đảm bảo sự toàn vẹn, bảo mật của đối tượng
 - Việc ràng buộc giữa code và data với nhau tạo thành một khổi duy nhất.

@@ -1,23 +1,23 @@
 package CaseStudy.Task03.Model;
 
-import CaseStudy.Task01.HoaDon;
-import CaseStudy.Task01.KhachHang;
+
+import CaseStudy.Task01.Bill;
 import CaseStudy.Task03.Common.Read_Write;
 
 import java.util.List;
 
-public class HoaDon_File {
+public class Bill_File {
 
     public static final String COMMA = ", ";
 
-    public static void writeFile(String pathFile, List<HoaDon> hoadon) {
+    public static void writeFile(String pathFile, List<Bill> bill) {
 
         String line = null;
 
         //INPUT
-        for (HoaDon listHoaDon : hoadon) {
-            line = listHoaDon.getMaHD() + COMMA + listHoaDon.getMaKH() + COMMA + listHoaDon.getMaSP() + COMMA + listHoaDon.getNgayMua()
-                    + COMMA + listHoaDon.getDonGia() + COMMA+ listHoaDon.getSoLuong() + COMMA+ listHoaDon.getTongTien();
+        for (Bill listBills : bill) {
+            line = listBills.getBillId() + COMMA + listBills.getCustomerId() + COMMA + listBills.getProductId() + COMMA + listBills.getBuyDate()
+                    + COMMA + listBills.getUnit() + COMMA+ listBills.getQuantity() + COMMA+ listBills.getTotal();
 
 //            System.out.println(line);
             Read_Write.writeFile(pathFile, line);

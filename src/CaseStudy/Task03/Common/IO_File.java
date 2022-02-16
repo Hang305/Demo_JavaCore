@@ -7,12 +7,10 @@ import java.util.Scanner;
 
 public class IO_File {
 
-    public static final String FIlE_SACH ="src/CaseStudy/Task03/Data/Sach.csv";
-
-    public static void CreateFile(){
+    public static void createFile(String pathFile){
         // Create file
         try{
-            File f = new File(FIlE_SACH);
+            File f = new File(pathFile);
 
             if(f.createNewFile()){
                 System.out.println("File create: "+ f.getName());
@@ -28,11 +26,11 @@ public class IO_File {
     }
 
     //Write to file
-    public static void WriteToFile(){
+    public static void writeToFile(String pathFile){
         //WriteToFile
         try{
-            File file;
-            FileWriter writetofile = new FileWriter(FIlE_SACH);
+
+            FileWriter writetofile = new FileWriter( pathFile);
             writetofile.write("Hello world!");
 
             writetofile.close();
@@ -45,10 +43,10 @@ public class IO_File {
     }
 
     //Read file
-    public static void ReadFile(){
+    public static void readFile(String pathFile){
 
         try{
-            File file = new File(FIlE_SACH);
+            File file = new File( pathFile);
             Scanner readerToFile = new Scanner(file);
 
             while(readerToFile.hasNextLine()){
@@ -63,8 +61,8 @@ public class IO_File {
     }
 
     //get file information
-    public static void GetInformationFile(){
-        File file = new File("filename.txt");
+    public static void getInformationFile(String pathFile){
+        File file = new File( pathFile);
         if(file.exists()){
             System.out.println("File name: " +file.getName());
             System.out.println("Absolute path: "+ file.getAbsolutePath());
@@ -78,9 +76,9 @@ public class IO_File {
     }
 
     //Delete file
-    public static void DeleteFile(){
+    public static void deleteFile(String pathFile){
 
-        File deleteFile = new File("filename.txt");
+        File deleteFile = new File( pathFile);
         if(deleteFile.delete()){
             System.out.println("Delete the file: "+ deleteFile.getName());
         }
