@@ -7,6 +7,10 @@ public abstract class Product {
     private long unit;
     private String categoryName;
 
+    public Product() {
+
+    }
+
     public abstract String getInformation(String productId);
     public abstract double discountPercent(String customer);
 

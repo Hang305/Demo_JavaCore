@@ -1,12 +1,9 @@
 package CaseStudy.Task02.Control;
 
 import CaseStudy.Task01.Product;
-import CaseStudy.Task02.MainmenuControll;
 
-import java.awt.print.Book;
-import java.util.ArrayList;
+import CaseStudy.Task01.Book;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class BookController {
@@ -18,25 +15,29 @@ public class BookController {
         this.listBooks = listBooks;
     }
 
+    public BookController() {
+
+    }
+
     //add product
-    public void addProduct(Book book) {
+    public void addPBook(Book book) {
 
         this.listBooks.add(book);
     }
 
     //search product
-    public List<Product> searchProductByName(String name) {
+    public List<Product> searchBookByName(String name) {
         return this.listProducts.stream().filter(o->o.getProductName().contains(name)).collect(Collectors.toList());
     }
 
     //Show list information product
-    public void showListInformationProduct() {
+    public void showListInformationBook() {
         this.listBooks.forEach(o -> System.out.println(o.toString()));
     }
 
 
     //delete product
-    public void deleteProduct() {
+    public void deleteBook() {
 
     }
 

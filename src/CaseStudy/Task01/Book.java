@@ -1,5 +1,6 @@
 package CaseStudy.Task01;
 
+import java.util.Date;
 import java.util.List;
 
 public class Book extends Product {
@@ -7,16 +8,27 @@ public class Book extends Product {
     private String Publisher;
     private Integer publishYear;
     private String author;
-    private String publishDate;
+    private Date publishDate;
     private String reprints;
 
-    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, String publisher, Integer publishYear, String author, String publishDate, String reprints) {
+    public List<Book> listBooks;
+
+//    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, List<Book> listBooks) {
+//        super(productId, productName, quantity, unit, categoryName);
+//        this.listBooks = listBooks;
+//    }
+
+    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, String reprints) {
         super(productId, productName, quantity, unit, categoryName);
         Publisher = publisher;
         this.publishYear = publishYear;
         this.author = author;
         this.publishDate = publishDate;
         this.reprints = reprints;
+    }
+
+    public Book() {
+
     }
 
     @Override
@@ -69,11 +81,11 @@ public class Book extends Product {
         this.author = author;
     }
 
-    public String getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(String publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 

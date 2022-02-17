@@ -1,15 +1,27 @@
 package CaseStudy.Task02.View;
 
+import CaseStudy.Task01.Product;
+import CaseStudy.Task02.Control.BookController;
 import CaseStudy.Task02.MainmenuControll;
 
+import CaseStudy.Task01.Book;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class BookView {
-    Scanner scanner = new Scanner(System.in);
-    MainmenuControll menu = new MainmenuControll();
 
-    public void checkProducts(){
-        while(true){
+    Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws ParseException {
+        Menu();
+    }
+
+    public static void Menu() throws ParseException {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
 
             System.out.println("Application Manager Products");
             System.out.println("Enter 1: To insert product");
@@ -19,7 +31,7 @@ public class BookView {
 
             String line = scanner.nextLine();
 
-            switch(line){
+            switch (line) {
                 case "1":
                     System.out.println("Enter book: to insert book");
                     System.out.println("Enter toy: to insert children toy");
@@ -27,31 +39,50 @@ public class BookView {
 
                     String type = scanner.nextLine();
 
-                    switch(type){
+                    switch (type) {
                         case "book":
                             System.out.println("Enter product Id: ");
                             String productID = scanner.nextLine();
+
                             System.out.println("Enter product name: ");
                             String productName = scanner.nextLine();
                             System.out.println("Enter quantity: ");
                             int quantity = scanner.nextInt();
+
                             System.out.println("Enter unit of book: ");
-                            String unit = scanner.nextLine();
+                            Long unit = scanner.nextLong();
+
                             System.out.println("Enter category name of book: ");
                             String category = scanner.nextLine();
+                            scanner.nextLine();
+                            System.out.println("Enter publish year of book: ");
+                            Integer publishYear = scanner.nextInt();
+
                             System.out.println("Enter publisher of book: ");
                             String publisher = scanner.nextLine();
-                            System.out.println("Enter publish year of book: ");
-                            String publishYear = scanner.nextLine();
+                            scanner.nextLine();
+
                             System.out.println("Enter author name of book: ");
                             String author = scanner.nextLine();
+
                             System.out.println("Enter publish date of book: ");
                             String publishDate = scanner.nextLine();
+
                             System.out.println("Enter reprints of book: ");
                             String reprints = scanner.nextLine();
-//                       Product listBooks = new Book();
+
+                            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(publishDate);
+                            Product listBooks = new Book(productID, productName, quantity, unit, category, publishYear,publisher, author, date, reprints);
+
+                            BookController bookController = new BookController();
+                            bookController.addPBook((Book)listBooks);
 
                     }
+                case "4":
+                    return;
+                default:
+                    System.out.println("Invalid input !");
+                    break;
             }
 
         }
