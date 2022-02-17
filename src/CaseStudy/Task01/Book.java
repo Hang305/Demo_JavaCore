@@ -13,11 +13,6 @@ public class Book extends Product {
 
     public List<Book> listBooks;
 
-//    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, List<Book> listBooks) {
-//        super(productId, productName, quantity, unit, categoryName);
-//        this.listBooks = listBooks;
-//    }
-
     public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, String reprints) {
         super(productId, productName, quantity, unit, categoryName);
         Publisher = publisher;
@@ -97,4 +92,20 @@ public class Book extends Product {
         this.reprints = reprints;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "ProductID='" + getProductId() + '\'' +
+                "Product name='" + getProductName() + '\'' +
+                "Quantity='" + getQuantity() + '\'' +
+                "Unit='" + getUnit() + '\'' +
+                "Category name='" + getCategoryName() + '\'' +
+                "Publisher='" + Publisher + '\'' +
+                ", publishYear=" + publishYear +
+                ", author='" + author + '\'' +
+                ", publishDate=" + publishDate +
+                ", reprints='" + reprints + '\'' +
+                ", listBooks=" + listBooks +
+                '}';
+    }
 }

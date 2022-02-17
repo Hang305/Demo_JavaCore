@@ -1,14 +1,5 @@
 package CaseStudy;
 
-import CaseStudy.Task01.*;
-import CaseStudy.Task02.MainmenuControll;
-import CaseStudy.Task03.Common.IO_File;
-import CaseStudy.Task03.Model.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
 
     public static final String FILE_BOOK ="src/CaseStudy/Task03/Data/Book.csv";

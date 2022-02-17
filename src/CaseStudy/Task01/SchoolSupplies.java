@@ -100,6 +100,11 @@ public class SchoolSupplies extends Product {
     @Override
     public String toString() {
         return "SchoolSupplies{" +
+                "ProductID='" + getProductId() + '\'' +
+                "Product name='" + getProductName() + '\'' +
+                "Quantity='" + getQuantity() + '\'' +
+                "Unit='" + getUnit() + '\'' +
+                "Category name='" + getCategoryName() + '\'' +
                 "origin='" + origin + '\'' +
                 ", brand='" + brand + '\'' +
                 ", supplier='" + supplier + '\'' +

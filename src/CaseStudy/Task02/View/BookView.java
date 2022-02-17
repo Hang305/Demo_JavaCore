@@ -1,8 +1,6 @@
 package CaseStudy.Task02.View;
 
-import CaseStudy.Task01.Product;
 import CaseStudy.Task02.Control.BookController;
-import CaseStudy.Task02.MainmenuControll;
 
 import CaseStudy.Task01.Book;
 
@@ -13,14 +11,13 @@ import java.util.Scanner;
 
 public class BookView {
 
-    Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) throws ParseException {
         Menu();
     }
 
     public static void Menu() throws ParseException {
         Scanner scanner = new Scanner(System.in);
+        BookController bookController = new BookController();
         while (true) {
 
             System.out.println("Application Manager Products");
@@ -55,6 +52,7 @@ public class BookView {
                             System.out.println("Enter category name of book: ");
                             String category = scanner.nextLine();
                             scanner.nextLine();
+
                             System.out.println("Enter publish year of book: ");
                             Integer publishYear = scanner.nextInt();
 
@@ -72,12 +70,19 @@ public class BookView {
                             String reprints = scanner.nextLine();
 
                             Date date = new SimpleDateFormat("dd/MM/yyyy").parse(publishDate);
-                            Product listBooks = new Book(productID, productName, quantity, unit, category, publishYear,publisher, author, date, reprints);
+                            Book listBooks = new Book(productID, productName, quantity, unit, category, publishYear, publisher, author, date, reprints);
 
-                            BookController bookController = new BookController();
-                            bookController.addPBook((Book)listBooks);
 
+//                            System.out.println(listBooks.toString());
+//                            System.out.println(bookController.toString());
+                            bookController.addBook(listBooks);
+                            bookController.showListInformationBook();
                     }
+                case "2":
+                    System.out.println("Enter name of book to search: ");
+                    String inputSearch = scanner.nextLine();
+                    bookController.searchBookByName(inputSearch).forEach(book -> System.out.println(book.toString()));
+                    break;
                 case "4":
                     return;
                 default:

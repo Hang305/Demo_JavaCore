@@ -7,11 +7,14 @@ public abstract class Product {
     private long unit;
     private String categoryName;
 
+    String[] categoryOfBook = {"Primary school", "High junior school", "High school"};
+
     public Product() {
 
     }
 
     public abstract String getInformation(String productId);
+
     public abstract double discountPercent(String customer);
 
 
@@ -56,6 +59,21 @@ public abstract class Product {
     }
 
     public String getCategoryName() {
+
+        for (int i = 0; i < categoryOfBook.length; i++) {
+            switch (categoryName) {
+                case "Primary school":
+                    categoryName = categoryOfBook[i];
+                    break;
+                case "High junior school":
+                    categoryName = categoryOfBook[i];
+                    break;
+                case "High school":
+                    categoryName = categoryOfBook[i];
+                    break;
+            }
+        }
+
         return categoryName;
     }
 
