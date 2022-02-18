@@ -13,7 +13,7 @@ public abstract class Product {
 
     }
 
-    public abstract String getInformation(String productId);
+    public abstract void getInformation();
 
     public abstract double discountPercent(String customer);
 
@@ -53,6 +53,8 @@ public abstract class Product {
     public long getUnit() {
         return unit;
     }
+
+    Order order = new Order();
 
     public void setUnit(long unit) {
         this.unit = unit;

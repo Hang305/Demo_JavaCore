@@ -1,5 +1,6 @@
 package CaseStudy.Task02.Control;
 
+import CaseStudy.Task01.Book;
 import CaseStudy.Task01.ChildrenToy;
 
 import java.util.ArrayList;
@@ -25,9 +26,11 @@ public class ChildrenToyController {
 
     //Show list information children toy
     public void showListInformationToy() {
-        this.listToys.forEach(o -> System.out.println(o.toString()));
+        this.listToys.forEach(childrenToy -> childrenToy.getInformation());
     }
-
+    public List<ChildrenToy> getListToy(){
+        return this.listToys;
+    }
     @Override
     public String toString() {
         return "SchoolToyController{" +

@@ -8,11 +8,11 @@ public class ChildrenToy extends Product {
     private String userManual;
 
     @Override
-    public String getInformation(String productId) {
+    public void getInformation() {
 
-        return " ProductID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
+        System.out.println(" ProductID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
                 "\n Category name: "+ this.getCategoryName()+ "\n Origin: " + this.getOrigin()+ "\n Brand: "+ this.getBrand()+ "\n Supplier: "+ this.getSupplier()+
-                "\n User manual: " + this.getUserManual();
+                "\n User manual: " + this.getUserManual());
     }
 
     @Override

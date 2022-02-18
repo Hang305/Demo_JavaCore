@@ -1,7 +1,6 @@
 package CaseStudy.Task01;
 
 import java.util.Date;
-import java.util.List;
 
 public class Book extends Product {
 
@@ -10,8 +9,6 @@ public class Book extends Product {
     private String author;
     private Date publishDate;
     private String reprints;
-
-    public List<Book> listBooks;
 
     public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, String reprints) {
         super(productId, productName, quantity, unit, categoryName);
@@ -27,10 +24,10 @@ public class Book extends Product {
     }
 
     @Override
-    public String getInformation(String productId) {
-        return "Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
+    public void getInformation() {
+        System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
                 "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publishe year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
-                "\n Publisher date: " + this.getPublishDate() + "\n Reprints: " + this.getReprints();
+                "\n Publisher date: " + this.getPublishDate() + "\n Reprints: " + this.getReprints());
     }
 
     @Override
@@ -105,7 +102,6 @@ public class Book extends Product {
                 ", author='" + author + '\'' +
                 ", publishDate=" + publishDate +
                 ", reprints='" + reprints + '\'' +
-                ", listBooks=" + listBooks +
                 '}';
     }
 }

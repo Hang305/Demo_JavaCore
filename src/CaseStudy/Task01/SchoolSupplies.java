@@ -22,11 +22,11 @@ public class SchoolSupplies extends Product {
     }
 
     @Override
-    public String getInformation(String MaSP) {
+    public void getInformation() {
 
-        return " Product ID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
+        System.out.println(" Product ID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
                 "\n Category name: "+ this.getCategoryName()+ "\n Origin: " + this.getOrigin()+ "\n Brand: "+ this.getBrand()+ "\n Supplier: "+ this.getSupplier()+
-                "\n User manual: " + this.getUserManual() + "\n Color: "+ this.getColor()+ "\n Material: "+ this.getMaterial()+ "\n Size: "+ this.getSize();
+                "\n User manual: " + this.getUserManual() + "\n Color: "+ this.getColor()+ "\n Material: "+ this.getMaterial()+ "\n Size: "+ this.getSize());
     }
 
     @Override

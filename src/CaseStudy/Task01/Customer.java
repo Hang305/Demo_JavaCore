@@ -18,6 +18,10 @@ public class Customer {
         this.customerType = customerType;
     }
 
+    public Customer() {
+
+    }
+
     public String getCustomerId() {
         return customerId;
     }

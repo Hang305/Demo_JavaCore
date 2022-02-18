@@ -28,9 +28,13 @@ public class BookController {
 
     //Show list information product
     public void showListInformationBook() {
-        this.listBooks.forEach(o -> System.out.println(o.toString()));
+        this.listBooks.forEach(book -> book.getInformation());
     }
 
+    //
+    public List<Book> getListBook(){
+        return this.listBooks;
+    }
     @Override
     public String toString() {
         return "BookController{" +
