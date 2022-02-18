@@ -138,15 +138,62 @@ public class Menu {
                             schoolController.showListInformationSchool();
                     }
                 case "2":
-                    System.out.println("Enter name of book to search: ");
-                    String inputSearch = scanner.nextLine();
-                    bookController.searchBookByName(inputSearch).forEach(book -> System.out.println(book.toString()));
+                    System.out.println("Enter book: to search book by name");
+                    System.out.println("Enter toy: to search children toy by name");
+                    System.out.println("Enter school: to search school by name");
+
+                    String typeSearch = scanner.nextLine();
+
+                    switch(typeSearch){
+
+                        case "book":
+                            System.out.println("Enter name of book to search: ");
+                            String inputSearch = scanner.nextLine();
+                            bookController.searchBookByName(inputSearch).forEach(book -> System.out.println(book.toString()));
+                            break;
+
+                        case "toy":
+                            System.out.println("Enter name of children toy to search: ");
+                            String inputSearchOfToy = scanner.nextLine();
+                            bookController.searchBookByName(inputSearchOfToy).forEach(book -> System.out.println(book.toString()));
+                            break;
+
+                        case "school":
+                            System.out.println("Enter name of school supplies to search: ");
+                            String inputSearchOfSchool = scanner.nextLine();
+                            bookController.searchBookByName(inputSearchOfSchool).forEach(book -> System.out.println(book.toString()));
+                            break;
+                    }
+
                     break;
+                case "3":
+                    System.out.println("Enter book: to show information of book ");
+                    System.out.println("Enter toy: to show information children toy");
+                    System.out.println("Enter school: to shhow information school");
+
+                    String typeShow = scanner.nextLine();
+
+                    switch(typeShow){
+
+                        case "book":
+                            System.out.println("The book information list: ");
+                            bookController.showListInformationBook();
+                            break;
+
+                        case "toy":
+                            System.out.println("The children toy information list: ");
+                            toyController.showListInformationToy();
+                            break;
+
+                        case "school":
+                            System.out.println("The school supplies information list: ");
+                           schoolController.showListInformationSchool();
+                            break;
+                    }
                 case "4":
                     return;
                 default:
                     System.out.println("Invalid input !");
-                    break;
             }
 
         }
