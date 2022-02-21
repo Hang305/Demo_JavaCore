@@ -5,7 +5,7 @@ import CaseStudy.Task03.Common.Read_Write;
 
 import java.util.List;
 
-public class ChildrenToy_File {
+public class ChildrenToyFile {
     public static final String COMMA = ", ";
 
     public static void writeFile(String pathFile, List<ChildrenToy> listToy) {

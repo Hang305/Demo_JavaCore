@@ -1,7 +1,5 @@
 package CaseStudy.Task02.Control;
 
-import CaseStudy.Task01.Product;
-
 import CaseStudy.Task01.Book;
 
 import java.util.ArrayList;

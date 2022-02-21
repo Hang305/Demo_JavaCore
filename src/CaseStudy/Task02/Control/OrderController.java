@@ -2,10 +2,7 @@ package CaseStudy.Task02.Control;
 
 import CaseStudy.Task01.Customer;
 import CaseStudy.Task01.Order;
-import CaseStudy.Task01.Product;
-import CaseStudy.Task01.SchoolSupplies;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,4 +32,32 @@ public class OrderController extends Order {
 //        this.listOrders.forEach(order -> order.toString());
     }
 
+    public void setListOrders(List<Order> listOrders) {
+        this.listOrders = listOrders;
+    }
+
+    public Long getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Long unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    @Override
+    public long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

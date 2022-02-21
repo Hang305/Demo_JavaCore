@@ -5,7 +5,7 @@ import CaseStudy.Task03.Common.Read_Write;
 
 import java.util.List;
 
-public class SchoolSupplies_File {
+public class SchoolSuppliesFile {
 
     public static final String COMMA = ", ";
 

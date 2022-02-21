@@ -7,7 +7,7 @@ import CaseStudy.Task03.Common.Read_Write;
 import java.util.List;
 
 
-public class Book_File {
+public class BookFile {
 
     public static final String COMMA = ", ";
 

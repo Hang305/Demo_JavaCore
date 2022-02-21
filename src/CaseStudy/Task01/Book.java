@@ -8,9 +8,9 @@ public class Book extends Product {
     private Integer publishYear;
     private String author;
     private Date publishDate;
-    private String reprints;
+    private int reprints;
 
-    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, String reprints) {
+    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, int reprints) {
         super(productId, productName, quantity, unit, categoryName);
         Publisher = publisher;
         this.publishYear = publishYear;
@@ -26,7 +26,7 @@ public class Book extends Product {
     @Override
     public void getInformation() {
         System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
-                "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publishe year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
+                "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publisher year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
                 "\n Publisher date: " + this.getPublishDate() + "\n Reprints: " + this.getReprints());
     }
 
@@ -81,11 +81,11 @@ public class Book extends Product {
         this.publishDate = publishDate;
     }
 
-    public String getReprints() {
+    public Integer getReprints() {
         return reprints;
     }
 
-    public void setReprints(String reprints) {
+    public void setReprints(Integer reprints) {
         this.reprints = reprints;
     }
 

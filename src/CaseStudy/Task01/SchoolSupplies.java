@@ -8,9 +8,10 @@ public class SchoolSupplies extends Product {
     private String userManual;
     private String color;
     private String material;
-    private String size;
+    private Double size;
 
-    public SchoolSupplies(String productId, String productName, Integer quantity, long unit, String categoryName, String origin, String brand, String supplier, String userManual, String color, String material, String size) {
+    public SchoolSupplies(String productId, String productName, Integer quantity, long unit, String categoryName, String origin, String brand, String supplier, String userManual,
+                          String color, String material, Double size) {
         super(productId, productName, quantity, unit, categoryName);
         this.origin = origin;
         this.brand = brand;
@@ -89,11 +90,11 @@ public class SchoolSupplies extends Product {
         this.material = material;
     }
 
-    public String getSize() {
+    public Double getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(Double size) {
         this.size = size;
     }
 

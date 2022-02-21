@@ -1,23 +1,21 @@
 package CaseStudy.Task03.Model;
 
-
-import CaseStudy.Task01.Order;
+import CaseStudy.Task01.Customer;
 import CaseStudy.Task03.Common.Read_Write;
 
 import java.util.List;
 
-public class Order_File {
+public class CustomerFile {
 
     public static final String COMMA = ", ";
 
-    public static void writeFile(String pathFile, List<Order> order) {
+    public static void writeFile(String pathFile, List<Customer> customer) {
 
         String line = null;
-
         //INPUT
-        for (Order listBills : order) {
-            line = listBills.getOrderId() + COMMA + listBills.getCustomerId() + COMMA + listBills.getProductId() + COMMA + listBills.getBuyDate()
-                    + COMMA + listBills.getUnit() + COMMA+ listBills.getQuantityBuy() + COMMA+ listBills.getTotal();
+        for (Customer listCustomers: customer) {
+            line = listCustomers.getCustomerId() + COMMA + listCustomers.getCustomerType() + COMMA + listCustomers.getFullName() + COMMA + listCustomers.getBirthDate()
+                    + COMMA + listCustomers.getEmail() + COMMA+ listCustomers.getPhoneNumber();
 
 //            System.out.println(line);
             Read_Write.writeFile(pathFile, line);

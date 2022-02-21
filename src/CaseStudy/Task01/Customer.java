@@ -1,15 +1,17 @@
 package CaseStudy.Task01;
 
+import java.util.Date;
+
 public class Customer {
 
     private String customerId;
     private String fullName;
     private String phoneNumber;
     private String email;
-    private String birthDate;
+    private Date birthDate;
     private String customerType;
 
-    public Customer(String customerId, String fullName, String phoneNumber, String email, String birthDate, String customerType) {
+    public Customer(String customerId, String fullName, String phoneNumber, String email, Date birthDate, String customerType) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -54,11 +56,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

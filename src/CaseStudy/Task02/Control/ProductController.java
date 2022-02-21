@@ -1,6 +1,5 @@
 package CaseStudy.Task02.Control;
 
-import CaseStudy.Task01.Book;
 import CaseStudy.Task01.Product;
 
 import java.util.ArrayList;
@@ -17,9 +16,11 @@ public class ProductController {
 
 
     public void showListInformationProduct() {
-        this.listProducts.forEach(o -> System.out.println(o.toString()));
+        this.listProducts.forEach(product -> product.getInformation());
     }
-
+    public List<Product> getListProducts(){
+        return this.listProducts;
+    }
     public List<Product> searchProductByID(String id) {
         return this.listProducts.stream().filter(o -> o.getProductId().contains(id)).collect(Collectors.toList());
     }
