@@ -21,4 +21,10 @@ public class CustomerController {
     public List<Customer> getListCustomers(){
         return this.listCustomers;
     }
+
+    //Show list information product
+    public void showListInformationCustomer() {
+        this.listCustomers.forEach(customer -> customer.showInformation());
+    }
+
 }

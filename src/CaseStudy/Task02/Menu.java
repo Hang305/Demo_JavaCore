@@ -4,6 +4,7 @@ import CaseStudy.Task01.*;
 import CaseStudy.Task02.Control.*;
 import CaseStudy.Task03.Model.*;
 
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,8 +15,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.lang.Integer.*;
-
 public class Menu {
 
     public static final String FILE_BOOK = "src/CaseStudy/Task03/Data/Book.csv";
@@ -25,12 +24,17 @@ public class Menu {
     public static final String FILE_CUSTOMER = "src/CaseStudy/Task03/Data/Customer.csv";
 
     //Email
-    public static final String REGEX_EMAIL ="^\\w+@+\\w+(\\.\\w+){1,2}$";
+    public static final String REGEX_EMAIL = "^\\w+@+\\w+(\\.\\w+){1,2}$";
     //Phone
-    public static final String REGEX_PHONE_NUMBER ="^84\\d{10}$";
+    public static final String REGEX_PHONE_NUMBER = "^\\+\\d{12}(\\d{2})?$";
     //Date
-    public static final String REGEX_DATE ="/\\b([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\\b/gm";
-    Matcher  matcher;
+    public static final String REGEX_DATE = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$";
+    public static final String REGEX_STRING = "^\\a-zA-z$";
+    Matcher matcher;
+    String categoryBook = "", publishDate;
+    Integer publishYear, reprints;
+    Date date;
+    Pattern pattern;
 
     public void Menu() throws ParseException {
 
@@ -92,7 +96,6 @@ public class Menu {
                             scanner.nextLine();
                             String indexCategoryBook = scanner.nextLine();
 
-                            String categoryBook = "";
                             switch (indexCategoryBook) {
                                 case "1":
                                     categoryBook = "Literature";
@@ -113,35 +116,54 @@ public class Menu {
                                     System.out.println("Input invalid!");
                                     break;
                             }
-                            Integer publishYear = null;
+
+                            //Import publisher year on file and validate field
                             do {
-                                System.out.println("Enter publish year: ");
-                                while(!scanner.hasNextInt()){
-                                    System.out.println("Input invalid! Please enter publish year as the number: ");
+                                System.out.println("Enter publish year with the number from 1000 to 2022:");
+                                while (!scanner.hasNextInt()) {
+                                    System.out.println("Input invalid! Enter publish year again: ");
                                     scanner.next();
                                 }
                                 publishYear = scanner.nextInt();
 
-                            } while (publishYear <= 1000 || publishYear >= 2022);
+                            } while (publishYear <= 1000 || publishYear > 2022);
 
+                            //Import publisher on file
                             System.out.println("Enter publisher: ");
                             scanner.nextLine();
                             String publisher = scanner.nextLine();
+
+                            //Import author on file
                             System.out.println("Enter author: ");
                             String author = scanner.nextLine();
-                            System.out.println("Enter publish date: ");
-                            String publishDate = scanner.nextLine();
 
-                            int reprints;
+                            //Import date on file and validate Date
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                            sdf.setLenient(false);
+                            boolean checkDate;
                             do {
-                                System.out.println("Enter reprints:");
-                                reprints = scanner.nextInt();
-                            }
-                            while (reprints <= 0);
-                            //Transfer String into date for publish date
-                            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(publishDate);
+                                try {
+                                    checkDate = true;
+                                    System.out.println("Enter publish date with format dd/MM/yyyy:");
+                                    date = sdf.parse(scanner.nextLine());
+                                } catch (ParseException ex) {
+                                    checkDate = false;
+                                    System.out.print("Input invalid with format! ");
 
-                            //Insert data into DB
+                                }
+                            } while (!checkDate);
+
+                            //Import reprints on file and validate field
+                            do {
+                                System.out.println("Enter reprints with the positive number: ");
+                                while (!scanner.hasNextInt()) {
+                                    System.out.println("Input invalid! Enter reprints again: ");
+                                    scanner.next();
+                                }
+                                reprints = scanner.nextInt();
+                            } while (reprints <= 0);
+
+                            //Insert data into file
                             Book listBooks = new Book(productID, productName, quantity, unit, categoryBook, publishYear, publisher, author, date, reprints);
                             bookController.addBook(listBooks);
                             System.out.println("Insert data successfully!");
@@ -290,8 +312,7 @@ public class Menu {
                             } while (size <= 0.0f);
 
                             //Insert data into DB
-                            SchoolSupplies listSchools = new SchoolSupplies(schoolSuppliesID, schoolName, quantityOfSchool, unitOfSchool, categorySchool, originOfSchool, brandOfSchool, supplierOfSchool
-                                    , userManualOfSchool, color, materialOfSchool, size);
+                            SchoolSupplies listSchools = new SchoolSupplies(schoolSuppliesID, schoolName, quantityOfSchool, unitOfSchool, categorySchool, originOfSchool, brandOfSchool, supplierOfSchool, userManualOfSchool, color, materialOfSchool, size);
                             schoolController.addSchool(listSchools);
                             System.out.println("Insert data successfully!");
 
@@ -336,46 +357,66 @@ public class Menu {
 
                 //Insert customer
                 case "3":
+
+                    //Import customer id on file
                     System.out.println("Enter Customer id:");
                     String customerId = scanner.nextLine();
+
+                    //Import full name on file
                     System.out.println("Enter full name:");
                     String fullName = scanner.nextLine();
 
-                    //Validate input for number phone
+                    //Validate the number phone
                     String numberPhone;
-                    do {
-                        System.out.println("Enter number phone:");
-                         numberPhone = scanner.nextLine();
-                        Pattern pattern = Pattern.compile(REGEX_PHONE_NUMBER);
-                        matcher = pattern.matcher(numberPhone);
+                    System.out.println("Enter number phone:");
+                    numberPhone = scanner.nextLine();
+                    while (true) {
+                        if (!numberPhone.matches(REGEX_PHONE_NUMBER)) {
+                            System.out.println("Enter number phone again: ");
+                            scanner.nextLine();
+                        }
+                        break;
+                    }
 
-                    }while(matcher.matches() == false);
+                    //Validate email
+                    System.out.println("Enter email:");
+                    String email = scanner.nextLine();
+                    while (true) {
+                        if (!email.matches(REGEX_EMAIL)) {
+                            System.out.println("Input invalid! Enter email again: ");
+                            scanner.nextLine();
+                        }
+                        break;
+                    }
 
-                    String email;
-                    do {
-                        System.out.println("Enter email:");
-                        email = scanner.nextLine();
-                        Pattern pattern = Pattern.compile(REGEX_EMAIL);
-                        matcher = pattern.matcher(email);
-                    }while(matcher.matches() == false);
+                    //Validate birthday
                     String birthDate;
 
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
+                    sdf.setLenient(false);
+                    boolean checkDate;
                     do {
-                        System.out.println("Enter birth date:");
-                        birthDate = scanner.nextLine();
-                        Pattern pattern = Pattern.compile(REGEX_DATE);
-                        matcher = pattern.matcher(birthDate);
-                    }while (matcher.matches() == false );
+                        try {
+                            checkDate = true;
+                            System.out.println("Enter birth date with format:");
+                            date = sdf.parse(scanner.nextLine());
+                            Date today = new Date();
+                            int age = today.getYear() - date.getYear();
+
+                        } catch (ParseException ex) {
+                            checkDate = false;
+                            System.out.print("Input invalid with format! ");
+
+                        }
+                    } while (!checkDate);
 
                     System.out.println("Enter customer type:");
                     String customerType = scanner.nextLine();
 
-                    //Transfer String into date for publish date
-                    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthDate);
-
                     Customer customer = new Customer(customerId, fullName, numberPhone, email, date, customerType);
                     customerController.addCustomer(customer);
                     System.out.println("Insert data successfully!");
+                    customerController.showListInformationCustomer();
 
                     //Import data into file csv
                     CustomerFile.writeFile(FILE_CUSTOMER, customerController.getListCustomers());
@@ -388,7 +429,7 @@ public class Menu {
                     System.out.println("Enter book: Show all information of book ");
                     System.out.println("Enter toy: Show  all information children toy");
                     System.out.println("Enter school: Show all information school supplies");
-                    System.out.println("Enter all: Show all information products");
+//                    System.out.println("Enter all: Show all information products");
 
                     String typeShow = scanner.nextLine();
 
@@ -412,11 +453,11 @@ public class Menu {
                             schoolController.showListInformationSchool();
                             break;
 
-                        //Show information for products
-                        case "all":
-                            System.out.println("All information products: ");
-                            productController.showListInformationProduct();
-                            break;
+//                        //Show information for products
+//                        case "all":
+//                            System.out.println("All information products: ");
+//                            productController.showListInformationProduct();
+//                            break;
 
                         default:
                             System.out.println("No data");
@@ -474,15 +515,13 @@ public class Menu {
                     break;
 
                 // Back to menu
-                case "7":
-                    continue;
+//                case "7":
+//                    continue;
 
-                    //Exit
+                //Exit
                 case "8":
                     return;
 
-                default:
-                    throw new IllegalStateException("Unexpected value: " + line);
             }
 
         }
