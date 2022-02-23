@@ -9,10 +9,10 @@ public class Customer {
     private String fullName;
     private String phoneNumber;
     private String email;
-    private Date birthDate;
+    private String birthDate;
     private String customerType;
 
-    public Customer(String customerId, String fullName, String phoneNumber, String email, Date birthDate, String customerType) {
+    public Customer(String customerId, String fullName, String phoneNumber, String email, String birthDate, String customerType) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -61,11 +61,11 @@ public class Customer {
         this.email = email;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

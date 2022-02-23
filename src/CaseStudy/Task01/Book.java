@@ -53,6 +53,12 @@ public class Book extends Product {
         }
         return percent;
     }
+    public void Them(Integer a){
+
+    }
+    public void Them (Integer a, double b){
+
+    }
 
     public String getPublisher() {
         return Publisher;

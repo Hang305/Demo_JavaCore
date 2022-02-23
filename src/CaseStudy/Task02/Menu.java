@@ -3,14 +3,16 @@ package CaseStudy.Task02;
 import CaseStudy.Task01.*;
 import CaseStudy.Task02.Control.*;
 import CaseStudy.Task03.Model.*;
+import CaseStudy.Task04.Validate.PublishYearValidate;
+import CaseStudy.Task04.Validate.validateBirthday;
 
-import java.sql.SQLOutput;
+import java.time.Period;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,23 +25,20 @@ public class Menu {
     public static final String FILE_ORDER = "src/CaseStudy/Task03/Data/Order.csv";
     public static final String FILE_CUSTOMER = "src/CaseStudy/Task03/Data/Customer.csv";
 
-    //Email
     public static final String REGEX_EMAIL = "^\\w+@+\\w+(\\.\\w+){1,2}$";
-    //Phone
-    public static final String REGEX_PHONE_NUMBER = "^\\+\\d{12}(\\d{2})?$";
-    //Date
-    public static final String REGEX_DATE = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$";
-    public static final String REGEX_STRING = "^\\a-zA-z$";
-    Matcher matcher;
-    String categoryBook = "", publishDate;
-    Integer publishYear, reprints;
+    public static final String REGEX_PHONE_NUMBER = "^\\d{12}$";
+    public static final String REGEX_ORDER_ID = "^\\DH+-+\\w{0,9})?$";
+
+    String categoryBook = "", numberPhone, birthDate;
+    Integer publishYear, reprints, quantity;
+    String dateOfBirthday;
     Date date;
-    Pattern pattern;
 
     public void Menu() throws ParseException {
 
-        LocalDate localDate = LocalDate.now();
-        int year = localDate.getYear();
+//        Date today = new Date();
+//        int yearCurrent = today.getYear() + 1900;
+//        //                    System.out.println("Year current: "+ yearCurrent);
 
         Scanner scanner = new Scanner(System.in);
         BookController bookController = new BookController();
@@ -67,7 +66,7 @@ public class Menu {
             switch (line) {
 
                 //Insert products
-                case "1":
+                case "1": {
                     System.out.println("Enter book: to insert book");
                     System.out.println("Enter toy: to insert children toy");
                     System.out.println("Enter school: to insert school supplies");
@@ -77,7 +76,7 @@ public class Menu {
                     switch (type) {
 
                         //Insert book
-                        case "book":
+                        case "book": {
                             System.out.println("Enter book Id: ");
                             String productID = scanner.nextLine();
                             System.out.println("Enter book name: ");
@@ -118,6 +117,9 @@ public class Menu {
                             }
 
                             //Import publisher year on file and validate field
+//                            System.out.println("Enter publish year with the number from 1000 to 2022:");
+//                            PublishYearValidate yearValidate = new PublishYearValidate(scanner.nextInt());
+//                            publishYear=  yearValidate.getPublishYearValidate();
                             do {
                                 System.out.println("Enter publish year with the number from 1000 to 2022:");
                                 while (!scanner.hasNextInt()) {
@@ -149,7 +151,6 @@ public class Menu {
                                 } catch (ParseException ex) {
                                     checkDate = false;
                                     System.out.print("Input invalid with format! ");
-
                                 }
                             } while (!checkDate);
 
@@ -173,10 +174,11 @@ public class Menu {
                             //Read file from Book.csv
                             BookFile.readFile(FILE_BOOK);
 
-                            break;
+                        }
+                        break;
 
                         //Import children toy
-                        case "toy":
+                        case "toy": {
                             System.out.println("Enter children Id: ");
                             String toyID = scanner.nextLine();
                             System.out.println("Enter children name: ");
@@ -192,7 +194,6 @@ public class Menu {
                             System.out.println("\t 3: Group over 8 years age");
                             scanner.nextLine();
                             String indexCategoryToy = scanner.nextLine();
-
                             String categoryToy = "";
                             switch (indexCategoryToy) {
                                 case "1":
@@ -208,7 +209,6 @@ public class Menu {
                                     System.out.println("Input invalid!");
                                     break;
                             }
-
                             System.out.println("Enter origin of children toy: ");
                             String originOfToy = scanner.nextLine();
                             System.out.println("Enter brand of book: ");
@@ -227,11 +227,11 @@ public class Menu {
                             ChildrenToyFile.writeFile(FILE_CHILDRENTOY, toyController.getListToy());
                             //Read file
                             ChildrenToyFile.readFile(FILE_CHILDRENTOY);
-
-                            break;
+                        }
+                        break;
 
                         //Insert school supplies
-                        case "school":
+                        case "school": {
                             System.out.println("Enter school supplies Id: ");
                             String schoolSuppliesID = scanner.nextLine();
                             System.out.println("Enter school supplies name: ");
@@ -320,24 +320,35 @@ public class Menu {
                             SchoolSuppliesFile.writeFile(FILE_SCHOOLSUPPLIES, schoolController.getListSchools());
                             //Read file
                             SchoolSuppliesFile.readFile(FILE_SCHOOLSUPPLIES);
-                            break;
 
-                        default:
+                        }
+                        break;
+
+                        default: {
                             System.out.println("Input invalid!");
-                            break;
+                        }
+                        break;
                     }
-                    break;
+                }
+                break;
 
                 //Insert order
-                case "2":
+                case "2": {
                     System.out.println("Enter order id:");
                     String orderId = scanner.nextLine();
                     System.out.println("Enter customer id:");
                     String customerid = scanner.nextLine();
                     System.out.println("Enter product id:");
                     String productId = scanner.nextLine();
-                    System.out.println("Enter quantity:");
-                    Integer quantity = scanner.nextInt();
+                    //Import reprints on file and validate field
+                    do {
+                        System.out.println("Enter quantity with the positive number: ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.print("Input invalid! Enter quantity again: ");
+                            scanner.next();
+                        }
+                        quantity = scanner.nextInt();
+                    } while (reprints <= 0);
 
                     //Transfer input String into date for DateBuy
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -353,11 +364,11 @@ public class Menu {
                     //Read file
                     OrderFile.readFile(FILE_ORDER);
                     System.out.println("Import data successfully");
-                    break;
+                }
+                break;
 
                 //Insert customer
-                case "3":
-
+                case "3": {
                     //Import customer id on file
                     System.out.println("Enter Customer id:");
                     String customerId = scanner.nextLine();
@@ -367,53 +378,55 @@ public class Menu {
                     String fullName = scanner.nextLine();
 
                     //Validate the number phone
-                    String numberPhone;
                     System.out.println("Enter number phone:");
                     numberPhone = scanner.nextLine();
-                    while (true) {
-                        if (!numberPhone.matches(REGEX_PHONE_NUMBER)) {
-                            System.out.println("Enter number phone again: ");
-                            scanner.nextLine();
+                    do {
+                        while (!numberPhone.matches(REGEX_PHONE_NUMBER)) {
+                            System.out.println("Input invalid with 12 numbers. Enter number phone again: ");
+                            numberPhone = scanner.nextLine();
                         }
                         break;
-                    }
+                    } while (true);
 
                     //Validate email
                     System.out.println("Enter email:");
                     String email = scanner.nextLine();
                     while (true) {
-                        if (!email.matches(REGEX_EMAIL)) {
+                        while (!email.matches(REGEX_EMAIL)) {
                             System.out.println("Input invalid! Enter email again: ");
-                            scanner.nextLine();
+                            email = scanner.nextLine();
                         }
                         break;
                     }
 
                     //Validate birthday
-                    String birthDate;
+                    String dateOfBirth = null;
+                    date = new Date();
+                    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    String today = df.format(date);
+                    System.out.println("Enter birthday with format dd/MM/yyyy and age must be greater than 16 years old: ");
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
-                    sdf.setLenient(false);
-                    boolean checkDate;
-                    do {
-                        try {
-                            checkDate = true;
-                            System.out.println("Enter birth date with format:");
-                            date = sdf.parse(scanner.nextLine());
-                            Date today = new Date();
-                            int age = today.getYear() - date.getYear();
-
-                        } catch (ParseException ex) {
-                            checkDate = false;
-                            System.out.print("Input invalid with format! ");
-
+                    while (true) {
+                        dateOfBirth = scanner.next();
+                        df.setLenient(false);
+                        System.out.println(dateOfBirth);
+                        df.parse(dateOfBirth);
+                        LocalDate birthday = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                        LocalDate now = LocalDate.parse(today, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                        int age = Period.between(now, birthday).getYears();
+                        while (age < 16 || age <= 0) {
+                            System.out.println("Input invalid format dd/MM/yyyy and age must be greater than 16 years old. Please enter birthday again: ");
+                            dateOfBirth = scanner.nextLine();
+                            break;
                         }
-                    } while (!checkDate);
+                        break;
+                    }
 
+                    //Import customer type
                     System.out.println("Enter customer type:");
                     String customerType = scanner.nextLine();
 
-                    Customer customer = new Customer(customerId, fullName, numberPhone, email, date, customerType);
+                    Customer customer = new Customer(customerId, fullName, numberPhone, email, dateOfBirthday, customerType);
                     customerController.addCustomer(customer);
                     System.out.println("Insert data successfully!");
                     customerController.showListInformationCustomer();
@@ -422,10 +435,11 @@ public class Menu {
                     CustomerFile.writeFile(FILE_CUSTOMER, customerController.getListCustomers());
                     //Read file
                     CustomerFile.readFile(FILE_CUSTOMER);
-                    break;
+                }
+                break;
 
                 //Show information products
-                case "4":
+                case "4": {
                     System.out.println("Enter book: Show all information of book ");
                     System.out.println("Enter toy: Show  all information children toy");
                     System.out.println("Enter school: Show all information school supplies");
@@ -463,16 +477,18 @@ public class Menu {
                             System.out.println("No data");
                             break;
                     }
-                    break;
+                }
+                break;
 
                 //Show information for orders products
-                case "5":
+                case "5": {
                     System.out.println("Show information orders:");
                     orderController.showInformationOrder();
-                    break;
+                }
+                break;
 
                 //Search products by name
-                case "6":
+                case "6": {
                     System.out.println("Enter book: Search book by name");
                     System.out.println("Enter toy: Search children toy by name");
                     System.out.println("Enter school: Search school supplies by name");
@@ -512,13 +528,14 @@ public class Menu {
                         default:
                             System.out.println("No data");
                     }
-                    break;
+                }
+                break;
 
                 // Back to menu
-//                case "7":
-//                    continue;
+                case "7":
+                    continue;
 
-                //Exit
+                    //Exit
                 case "8":
                     return;
 
