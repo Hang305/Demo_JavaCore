@@ -3,19 +3,14 @@ package CaseStudy.Task02;
 import CaseStudy.Task01.*;
 import CaseStudy.Task02.Control.*;
 import CaseStudy.Task03.Model.*;
-import CaseStudy.Task04.Validate.PublishYearValidate;
-import CaseStudy.Task04.Validate.validateBirthday;
 
-import java.time.Period;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Menu {
 
@@ -28,17 +23,20 @@ public class Menu {
     public static final String REGEX_EMAIL = "^\\w+@+\\w+(\\.\\w+){1,2}$";
     public static final String REGEX_PHONE_NUMBER = "^\\d{12}$";
     public static final String REGEX_ORDER_ID = "^\\DH+-+\\w{0,9})?$";
+    //    public static final String REGEX_DATE = "^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}$";
+    public static final String REGEX_DATE = "(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)";
 
-    String categoryBook = "", numberPhone, birthDate;
+    String categoryBook = "", numberPhone, dateOfBirth;
     Integer publishYear, reprints, quantity;
+    long age;
     String dateOfBirthday;
     Date date;
 
     public void Menu() throws ParseException {
 
-//        Date today = new Date();
-//        int yearCurrent = today.getYear() + 1900;
-//        //                    System.out.println("Year current: "+ yearCurrent);
+        Date today = new Date();
+        long yearCurrent = today.getYear() + 1900;
+        //                    System.out.println("Year current: "+ yearCurrent);
 
         Scanner scanner = new Scanner(System.in);
         BookController bookController = new BookController();
@@ -171,8 +169,7 @@ public class Menu {
 
                             //Import data into file csv
                             BookFile.writeFile(FILE_BOOK, bookController.getListBook());
-                            //Read file from Book.csv
-                            BookFile.readFile(FILE_BOOK);
+
 
                         }
                         break;
@@ -225,8 +222,7 @@ public class Menu {
 
                             //Import data into file csv
                             ChildrenToyFile.writeFile(FILE_CHILDRENTOY, toyController.getListToy());
-                            //Read file
-                            ChildrenToyFile.readFile(FILE_CHILDRENTOY);
+
                         }
                         break;
 
@@ -318,8 +314,7 @@ public class Menu {
 
                             //Import data into file csv
                             SchoolSuppliesFile.writeFile(FILE_SCHOOLSUPPLIES, schoolController.getListSchools());
-                            //Read file
-                            SchoolSuppliesFile.readFile(FILE_SCHOOLSUPPLIES);
+
 
                         }
                         break;
@@ -400,33 +395,39 @@ public class Menu {
                     }
 
                     //Validate birthday
-                    String dateOfBirth = null;
-                    date = new Date();
+                    //parse() convert from String to Date
+                    //format() convert LocalDate object to String.
+                    String[] yearOfBirth;
+                    Date birthday;
                     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                    String today = df.format(date);
                     System.out.println("Enter birthday with format dd/MM/yyyy and age must be greater than 16 years old: ");
+//                    dateOfBirth = scanner.nextLine();
+                    df.setLenient(false);
+                    boolean checkDate;
+                    do {
+                        try {
+                            checkDate = true;
+                            birthday = df.parse(scanner.nextLine());
+                            while (age < 16 || age <= 0) {
+                                System.out.println("Birthday must be greater than 16 years old. Please enter birthday again: ");
+                                dateOfBirth = scanner.nextLine();
 
-                    while (true) {
-                        dateOfBirth = scanner.next();
-                        df.setLenient(false);
-                        System.out.println(dateOfBirth);
-                        df.parse(dateOfBirth);
-                        LocalDate birthday = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                        LocalDate now = LocalDate.parse(today, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                        int age = Period.between(now, birthday).getYears();
-                        while (age < 16 || age <= 0) {
-                            System.out.println("Input invalid format dd/MM/yyyy and age must be greater than 16 years old. Please enter birthday again: ");
-                            dateOfBirth = scanner.nextLine();
-                            break;
+                                yearOfBirth = dateOfBirth.split("/", 3);
+                                age = yearCurrent - Long.parseLong(yearOfBirth[2]);
+                                dateOfBirth = df.format(birthday);
+                            }
+                        } catch (ParseException ex) {
+                            System.out.println("Input invalid format dd/MM/yyyy. Please enter birthday again: ");
+                            checkDate = false;
                         }
-                        break;
-                    }
+                    } while (!checkDate);
 
                     //Import customer type
-                    System.out.println("Enter customer type:");
-                    String customerType = scanner.nextLine();
+//                    System.out.println("Enter customer type:");
+//                    String customerType = scanner.nextLine();
+                    String customerType = "Normal";
 
-                    Customer customer = new Customer(customerId, fullName, numberPhone, email, dateOfBirthday, customerType);
+                    Customer customer = new Customer(customerId, fullName, numberPhone, email, dateOfBirth, customerType);
                     customerController.addCustomer(customer);
                     System.out.println("Insert data successfully!");
                     customerController.showListInformationCustomer();
@@ -453,18 +454,27 @@ public class Menu {
                         case "book":
                             System.out.println("The book information list: ");
                             bookController.showListInformationBook();
+                            //Read file from Book.csv
+                            BookFile.readFile(FILE_BOOK);
+
+//                            bookController.addBook((Book)lsBook);
                             break;
 
                         //Show information for children toy
                         case "toy":
                             System.out.println("The children toy information list: ");
                             toyController.showListInformationToy();
+                            //Read file
+                            ChildrenToyFile.readFile(FILE_CHILDRENTOY);
                             break;
 
                         //Show information for School supplies
                         case "school":
                             System.out.println("The school supplies information list: ");
-                            schoolController.showListInformationSchool();
+//                            schoolController.showListInformationSchool();
+                            //Read file
+                            SchoolSuppliesFile.readFile(FILE_SCHOOLSUPPLIES);
+
                             break;
 
 //                        //Show information for products

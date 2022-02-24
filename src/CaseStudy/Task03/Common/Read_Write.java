@@ -3,6 +3,7 @@ package CaseStudy.Task03.Common;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Read_Write {
 
@@ -28,13 +29,13 @@ public class Read_Write {
         List<String> listLine = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(pathFile);
-
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
-
             String line = null;
 
             while ((line = bufferedReader1.readLine()) != null) {
                 listLine.add(line);
+//                String data = bufferedReader1.readLine();
+//                System.out.println(data);
             }
 
         } catch (FileNotFoundException e) {
@@ -43,5 +44,30 @@ public class Read_Write {
             e.printStackTrace();
         }
         return listLine;
+    }
+
+    public static String[] READFILE(String pathFile) {
+        String[] result = new String[20];
+        try {
+            File file = new File(pathFile);
+            Scanner readerToFile = new Scanner(file);
+            String[][] list;
+            while (readerToFile.hasNextLine()) {
+//                result = data.split(",");
+                String data = readerToFile.nextLine();
+                result = data.split(",");
+                System.out.println(data);
+
+                for (String item :result
+                ) {
+                    System.out.println(item);
+                }
+            }
+            readerToFile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
+        return result;
     }
 }

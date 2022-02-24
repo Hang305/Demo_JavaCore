@@ -11,11 +11,11 @@ public class CustomerFile {
     public static final String COMMA = ", ";
 
     public static void writeFile(String pathFile, List<Customer> customer) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String line = null;
         //INPUT
         for (Customer listCustomers: customer) {
-            line = listCustomers.getCustomerId() + COMMA + listCustomers.getCustomerType() + COMMA + listCustomers.getFullName() + COMMA + sdf.format(listCustomers.getBirthDate())
+            line = listCustomers.getCustomerId() + COMMA + listCustomers.getCustomerType() + COMMA + listCustomers.getFullName() + COMMA + listCustomers.getBirthDate()
                     + COMMA + listCustomers.getEmail() + COMMA+ listCustomers.getPhoneNumber();
 
 //            System.out.println(line);

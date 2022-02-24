@@ -11,7 +11,7 @@ public class Book extends Product {
     private Date publishDate;
     private int reprints;
 
-    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear,String publisher,  String author, Date publishDate, int reprints) {
+    public Book(String productId, String productName, Integer quantity, long unit, String categoryName, Integer publishYear, String publisher, String author, Date publishDate, int reprints) {
         super(productId, productName, quantity, unit, categoryName);
         Publisher = publisher;
         this.publishYear = publishYear;
@@ -25,6 +25,7 @@ public class Book extends Product {
     }
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     @Override
     public void getInformation() {
         System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
@@ -48,16 +49,10 @@ public class Book extends Product {
                 percent = 0.02f;
                 break;
             default:
-                percent =0f;
+                percent = 0f;
                 break;
         }
         return percent;
-    }
-    public void Them(Integer a){
-
-    }
-    public void Them (Integer a, double b){
-
     }
 
     public String getPublisher() {

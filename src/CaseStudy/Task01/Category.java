@@ -9,15 +9,17 @@ public class Category {
     private String categoryType;
     private String description;
 
+     String categoryToy ;
+
     public Category(Integer categoryId, String categoryType, String description) {
         this.categoryId = categoryId;
         this.categoryType = categoryType;
         this.description = description;
     }
 
-    public static List<String> showListCategoryOfBook(){
+    public static List<String> showListCategoryOfBook() {
 
-        List<String >listCategoryOfBook = new ArrayList<>();
+        List<String> listCategoryOfBook = new ArrayList<>();
 
         listCategoryOfBook.add("Literature");
         listCategoryOfBook.add("Science");
@@ -27,9 +29,10 @@ public class Category {
 
         return listCategoryOfBook;
     }
-    public static List<String> showListCategoryOfToy(){
 
-        List<String >listCategoryOfToy = new ArrayList<>();
+    public static List<String> showListCategoryOfToy() {
+
+        List<String> listCategoryOfToy = new ArrayList<>();
 
         listCategoryOfToy.add("Group 0-3 years age");
         listCategoryOfToy.add("Group 4-8 years age");
@@ -37,9 +40,10 @@ public class Category {
 
         return listCategoryOfToy;
     }
-    public static List<String> showListCategoryOfSchoolSupplies(){
 
-        List<String >listCategoryOfSchoolSupplies = new ArrayList<>();
+    public static List<String> showListCategoryOfSchoolSupplies() {
+
+        List<String> listCategoryOfSchoolSupplies = new ArrayList<>();
 
         listCategoryOfSchoolSupplies.add("The primary school");
         listCategoryOfSchoolSupplies.add("The junior high school");
