@@ -84,7 +84,7 @@ public class Order {
     }
 
     public void showInformation(){
-        System.out.println("Order ID: " + this.orderId + "\n Customer name: " + getOrderId() + "\n Quantity: " + getProductId() + "\n Unit: " + getUnit() +
+        System.out.println(" Order ID: " + this.orderId + "\n Customer name: " + getOrderId() + "\n Quantity: " + getProductId() + "\n Unit: " + getUnit() +
                 "\nQuantity buy:" + quantityBuy + "\n Date buy:" + buyDate + "\n Total: " + total);
     }
     @Override

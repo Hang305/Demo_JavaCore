@@ -1,6 +1,4 @@
 package CaseStudy.Task03.Model;
-
-
 import CaseStudy.Task01.Book;
 import CaseStudy.Task03.Common.Read_Write;
 
@@ -10,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
-
-
 public class BookFile {
 
     public static final String COMMA = ", ";
@@ -31,48 +27,31 @@ public class BookFile {
     }
 
     //Output
-    public static List<Book> readFile(String pathFile) {
+    public static List<String> readFile(String pathFile) {
 
         //OUTPUT
-        List<Book> result = new ArrayList<>();
+        List<String> listLine = new ArrayList<>();
         try {
-            File file = new File(pathFile);
-            Scanner readerToFile = new Scanner(file);
-            while (readerToFile.hasNextLine()) {
-                String data = readerToFile.nextLine();
-                System.out.println(data);
+            FileReader fileReader = new FileReader(pathFile);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader);
+            String line = "";
+            String[] result;
+            while ((line = bufferedReader1.readLine()) != null) {
+                result = line.split(",");
+                String check;
+                System.out.println(" Product ID: " + result[0] + "\n Product name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
+                        "\n Category name:" + result[4] + "\n Publisher:" + result[5] + "\n Publisher year: " + result[6] + "\n Author: " + result[7] +
+                        "\n Publisher date: " + result[8] + "\n Reprints: " + result[9]);
 
+                System.out.println("-----------------");
             }
-            readerToFile.close();
+
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred");
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
-
-    }
-    public static List getAddressInfor(String line) {
-        List<String> result = new ArrayList<>();
-        Stack<Character> stack = new Stack<>();
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < line.length(); i++) {
-            char ch = line.charAt(i);
-            if (ch == '\"') {
-                if (str.length() > 0 && stack.size() % 2 == 0)
-                    str.append(ch);
-                stack.push(ch);
-            } else if (ch == ',' && stack.size() % 2 == 0) {
-                result.add(str.toString());
-                stack.clear();
-                str = new StringBuilder();
-            } else if (ch == ',' && stack.size() % 2 != 0) {
-                str.append(ch);
-            } else {
-                str.append(ch);
-            }
-        }
-        result.add(str.toString());
-        return result;
+        return listLine;
 
     }
 }

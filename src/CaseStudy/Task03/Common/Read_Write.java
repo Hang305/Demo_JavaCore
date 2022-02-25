@@ -30,10 +30,15 @@ public class Read_Write {
         try {
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
-            String line = null;
-
+            String line = "";
+            String[] result;
             while ((line = bufferedReader1.readLine()) != null) {
-                listLine.add(line);
+                result = line.split(",");
+                String check;
+                for(String item : result){
+                    System.out.println(item + " ");
+                }
+//                listLine.add(line);
 //                String data = bufferedReader1.readLine();
 //                System.out.println(data);
             }
