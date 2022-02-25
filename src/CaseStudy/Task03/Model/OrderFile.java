@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class OrderFile {
@@ -18,13 +19,11 @@ public class OrderFile {
     public static void writeFile(String pathFile, List<Order> order) {
 
         String line = null;
-
         //INPUT
         for (Order listBills : order) {
             line = listBills.getOrderId() + COMMA + listBills.getCustomerId() + COMMA + listBills.getProductId() + COMMA + listBills.getBuyDate()
                     + COMMA + listBills.getUnit() + COMMA+ listBills.getQuantityBuy() + COMMA+ listBills.getTotal();
 
-//            System.out.println(line);
             Read_Write.writeFile(pathFile, line);
         }
     }
@@ -39,12 +38,11 @@ public class OrderFile {
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
             String[] result;
-            while ((line = bufferedReader1.readLine()) != null) {
-                result = line.split(",");
-                String check;
-                System.out.println(" Order ID: " +result[0] + "\n Customer name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
-                        "\n Quantity buy:" + result[4] + "\n Date buy:" + result[5] + "\n Total: " + result[6] );
 
+            while ((line = bufferedReader1.readLine()) != null) {
+                List<String> items = Arrays.asList(line.split(","));
+                Order listOrder = new Order();
+                listOrder.showInformation(items );
                 System.out.println("-----------------");
             }
 

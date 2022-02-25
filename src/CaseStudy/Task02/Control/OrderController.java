@@ -11,7 +11,8 @@ public class OrderController extends Order {
     private List<Order> listOrders;
     Long unitPrice, total;
     Customer customer = new Customer();
-
+    String productId;
+    ProductController productController = new ProductController();
 
     public OrderController() {
         this.listOrders = new ArrayList<>();
@@ -26,18 +27,17 @@ public class OrderController extends Order {
         return this.listOrders;
     }
 
-    public void showInformationOrder() {
-        System.out.println("Order ID: " + this.getOrderId() + "\n Customer name: " + this.getCustomerId() + "\n Quantity: " + this.getProductId() + "\n Unit: " + this.getUnit() +
-                "\nQuantity buy:" + this.getQuantityBuy() + "\n Date buy:" + this.getBuyDate() + "\n Total: " + total);
-//        this.listOrders.forEach(order -> order.toString());
-    }
+    public void showInformationOrder(List<String> listOrder) {
+//        this.productId = listOrder.get(2);
+        this.listOrders.forEach(order -> order.showInformation(listOrder));
 
-    public void setListOrders(List<Order> listOrders) {
-        this.listOrders = listOrders;
+
     }
 
     public Long getUnitPrice() {
+        productController.getProductId(this.productId);
         return unitPrice;
+
     }
 
     public void setUnitPrice(Long unitPrice) {
@@ -51,13 +51,5 @@ public class OrderController extends Order {
 
     public void setTotal(Long total) {
         this.total = total;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

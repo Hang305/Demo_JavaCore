@@ -4,10 +4,8 @@ import CaseStudy.Task03.Common.Read_Write;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
+
 public class BookFile {
 
     public static final String COMMA = ", ";
@@ -36,9 +34,9 @@ public class BookFile {
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
             String[] result;
+
             while ((line = bufferedReader1.readLine()) != null) {
                 result = line.split(",");
-                String check;
                 System.out.println(" Product ID: " + result[0] + "\n Product name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
                         "\n Category name:" + result[4] + "\n Publisher:" + result[5] + "\n Publisher year: " + result[6] + "\n Author: " + result[7] +
                         "\n Publisher date: " + result[8] + "\n Reprints: " + result[9]);

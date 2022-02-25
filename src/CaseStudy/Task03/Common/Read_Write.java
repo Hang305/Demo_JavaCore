@@ -38,9 +38,6 @@ public class Read_Write {
                 for(String item : result){
                     System.out.println(item + " ");
                 }
-//                listLine.add(line);
-//                String data = bufferedReader1.readLine();
-//                System.out.println(data);
             }
 
         } catch (FileNotFoundException e) {
@@ -49,30 +46,5 @@ public class Read_Write {
             e.printStackTrace();
         }
         return listLine;
-    }
-
-    public static String[] READFILE(String pathFile) {
-        String[] result = new String[20];
-        try {
-            File file = new File(pathFile);
-            Scanner readerToFile = new Scanner(file);
-            String[][] list;
-            while (readerToFile.hasNextLine()) {
-//                result = data.split(",");
-                String data = readerToFile.nextLine();
-                result = data.split(",");
-                System.out.println(data);
-
-                for (String item :result
-                ) {
-                    System.out.println(item);
-                }
-            }
-            readerToFile.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred");
-            e.printStackTrace();
-        }
-        return result;
     }
 }

@@ -1,5 +1,7 @@
 package CaseStudy.Task01;
 
+import java.util.List;
+
 public class SchoolSupplies extends Product {
 
     private String origin;
@@ -22,8 +24,12 @@ public class SchoolSupplies extends Product {
         this.size = size;
     }
 
+    public SchoolSupplies() {
+
+    }
+
     @Override
-    public void getInformation() {
+    public void getInformation( List<String> listSchool) {
 
         System.out.println(" Product ID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
                 "\n Category name: "+ this.getCategoryName()+ "\n Origin: " + this.getOrigin()+ "\n Brand: "+ this.getBrand()+ "\n Supplier: "+ this.getSupplier()+

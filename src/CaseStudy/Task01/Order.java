@@ -1,21 +1,25 @@
 package CaseStudy.Task01;
 
+import CaseStudy.Task02.Control.ProductController;
+
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 public class Order {
 
     private String orderId;
     private String customerId;
     private String productId;
-    private Integer quantityBuy;
-    private LocalDateTime buyDate;
+    private Integer quantityBuy = 0;
+    private String buyDate;
     private long unit;
     private long total;
 
     Customer customer = new Customer();
+    ProductController productController = new ProductController();
 
-    public Order(String orderId, String customerid, String productId, Integer quantity, LocalDateTime dateBuy) {
+    public Order(String orderId, String customerid, String productId, Integer quantity, String dateBuy) {
         this.orderId = orderId;
         this.customerId = customerid;
         this.productId = productId;
@@ -44,6 +48,7 @@ public class Order {
     }
 
     public String getProductId() {
+
         return productId;
     }
 
@@ -59,11 +64,11 @@ public class Order {
         this.quantityBuy = quantity;
     }
 
-    public LocalDateTime getBuyDate() {
+    public String getBuyDate() {
         return buyDate;
     }
 
-    public void setBuyDate(LocalDateTime buyDate) {
+    public void setBuyDate(String buyDate) {
         this.buyDate = buyDate;
     }
 
@@ -80,13 +85,18 @@ public class Order {
     }
 
     public void setTotal(long total) {
-        this.total = unit*quantityBuy;
+        this.total = unit * quantityBuy;
     }
 
-    public void showInformation(){
-        System.out.println(" Order ID: " + this.orderId + "\n Customer name: " + getOrderId() + "\n Quantity: " + getProductId() + "\n Unit: " + getUnit() +
-                "\nQuantity buy:" + quantityBuy + "\n Date buy:" + buyDate + "\n Total: " + total);
+    public void showInformation(List<String> listOrders) {
+        this.productId = listOrders.get(2);
+        System.out.println(this.productId);
+
+        System.out.println(" Order ID: " + listOrders.get(0) + "\n Customer id: " + listOrders.get(1) + "\n Product id: "
+                + listOrders.get(2) + "\n Date buy:" + listOrders.get(3) + "\n Unit: " + getUnitOfProduct(listOrders.get(2))
+                + "\n Quantity buy: " + listOrders.get(5) + "\n Total: " + unit * quantityBuy);
     }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -99,5 +109,14 @@ public class Order {
                 ", total=" + total +
                 ", customer=" + customer +
                 '}';
+    }
+
+    public long getUnitOfProduct(String productId) {
+
+        if (productId == productController.getProductId(productId)){
+            unit = productController.getUnitByProductId(productId);
+        }
+        return unit;
+
     }
 }

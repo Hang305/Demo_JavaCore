@@ -24,8 +24,8 @@ public class ChildrenToyController {
     }
 
     //Show list information children toy
-    public void showListInformationToy() {
-        this.listToys.forEach(childrenToy -> childrenToy.getInformation());
+    public void showListInformationToy(List<String> listToy) {
+        this.listToys.forEach(childrenToy -> childrenToy.getInformation(listToy));
     }
     public List<ChildrenToy> getListToy(){
         return this.listToys;

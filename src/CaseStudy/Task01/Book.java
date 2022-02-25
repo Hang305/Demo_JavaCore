@@ -2,6 +2,7 @@ package CaseStudy.Task01;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Book extends Product {
 
@@ -27,7 +28,7 @@ public class Book extends Product {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
-    public void getInformation() {
+    public void getInformation( List<String> listBook) {
         System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
                 "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publisher year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
                 "\n Publisher date: " + sdf.format(this.getPublishDate()) + "\n Reprints: " + this.getReprints());

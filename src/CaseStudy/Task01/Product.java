@@ -1,5 +1,7 @@
 package CaseStudy.Task01;
 
+import java.util.List;
+
 public abstract class Product {
     private String productId;
     private String productName;
@@ -14,6 +16,7 @@ public abstract class Product {
     }
 
     public abstract double discountPercent(String customer);
+    public abstract void getInformation(List<String> listInfo);
 
     public Product(String productId, String productName, Integer quantity, long unit, String categoryName) {
         this.productId = productId;
@@ -21,11 +24,6 @@ public abstract class Product {
         this.quantity = quantity;
         this.unit = unit;
         this.categoryName = categoryName;
-    }
-
-    public void getInformation() {
-        System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
-                "\n Category name:" + this.getCategoryName() + "\n Publisher:");
     }
 
     public String getProductId() {
@@ -55,8 +53,6 @@ public abstract class Product {
     public long getUnit() {
         return unit;
     }
-
-    Order order = new Order();
 
     public void setUnit(long unit) {
         this.unit = unit;

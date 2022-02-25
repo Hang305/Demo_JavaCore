@@ -24,8 +24,8 @@ public class SchoolSuppliesController {
     }
 
     //Show list information children toy
-    public void showListInformationSchool() {
-        this.listSchools.forEach(schoolSupplies -> schoolSupplies.getInformation());
+    public void showListInformationSchool(List<String> listSchools) {
+        this.listSchools.forEach(schoolSupplies -> schoolSupplies.getInformation(listSchools));
     }
     public List<SchoolSupplies> getListSchools(){
         return this.listSchools;

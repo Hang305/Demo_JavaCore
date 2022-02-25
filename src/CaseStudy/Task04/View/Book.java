@@ -2,31 +2,61 @@ package CaseStudy.Task04.View;
 
 import CaseStudy.Task02.Control.BookController;
 import CaseStudy.Task03.Model.BookFile;
+import CaseStudy.Task04.Validate.ValidateProductId;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Book {
+
     Scanner scanner = new Scanner(System.in);
-    String categoryBook;
+
+
+    String categoryBook, productId;
     Integer publishYear, reprints;
     Date date = new Date();
 
     BookController bookController = new BookController();
     public static final String FILE_BOOK = "src/CaseStudy/Task03/Data/Book.csv";
 
+    //Search book by name
+    public void searchBookByName() {
+        System.out.println("Enter name of book to search: ");
+        String inputSearch = scanner.nextLine();
+        bookController.searchBookByName(inputSearch).forEach(book -> System.out.println(book.toString()));
+    }
+
+    //Show data from file csv
+    public void showInformation() {
+        System.out.println("The book information list: ");
+
+        //Read file from Book.csv
+       List<String> listBook=  BookFile.readFile(FILE_BOOK);
+        bookController.showListInformationBook(listBook);
+    }
+
     public void insertBook() {
-        System.out.println("Enter book Id: ");
-        String productID = scanner.nextLine();
+
+        //Validate product name
+        ValidateProductId productid = new ValidateProductId();
+        productId = productid.validateProductId();
+
+        //Import product name
         System.out.println("Enter book name: ");
         String productName = scanner.nextLine();
+
+        //Import quantity
         System.out.println("Enter quantity: ");
         int quantity = scanner.nextInt();
+
+        //Import unit
         System.out.println("Enter unit: ");
         Long unit = scanner.nextLong();
 
+        //Choose a category
         System.out.println("Please choose a category: ");
         System.out.println("\t 1: Literature");
         System.out.println("\t 2: Science");
@@ -56,6 +86,8 @@ public class Book {
                 System.out.println("Input invalid!");
                 break;
         }
+
+        //Validate publish year
         do {
             System.out.println("Enter publish year with the number from 1000 to 2022:");
             while (!scanner.hasNextInt()) {
@@ -101,7 +133,7 @@ public class Book {
         } while (reprints <= 0);
 
         //Insert data into file
-        CaseStudy.Task01.Book listBooks = new CaseStudy.Task01.Book(productID, productName, quantity, unit, categoryBook, publishYear, publisher, author, date, reprints);
+        CaseStudy.Task01.Book listBooks = new CaseStudy.Task01.Book(productId, productName, quantity, unit, categoryBook, publishYear, publisher, author, date, reprints);
         bookController.addBook(listBooks);
         System.out.println("Insert data successfully!");
 
@@ -109,19 +141,4 @@ public class Book {
         BookFile.writeFile(FILE_BOOK, bookController.getListBook());
 
     }
-
-    public void searchBookByName(){
-        System.out.println("Enter name of book to search: ");
-        String inputSearch = scanner.nextLine();
-        bookController.searchBookByName(inputSearch).forEach(book -> System.out.println(book.toString()));
-    }
-
-    //Show data from file csv
-    public void showInformation() {
-        System.out.println("The book information list: ");
-        bookController.showListInformationBook();
-        //Read file from Book.csv
-        BookFile.readFile(FILE_BOOK);
-    }
-
 }

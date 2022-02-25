@@ -15,14 +15,14 @@ public class Customer {
 
     public static final String FILE_CUSTOMER = "src/CaseStudy/Task03/Data/Customer.csv";
 
-    String numberPhone,dateOfBirth;
+    String numberPhone, dateOfBirth;
     long age;
     Date today = new Date();
     long yearCurrent = today.getYear() + 1900;
     Scanner scanner = new Scanner(System.in);
     CustomerController customerController = new CustomerController();
 
-    public void addCustomer(){
+    public void addCustomer() {
         //Import customer id on file
         System.out.println("Enter Customer id:");
         String customerId = scanner.nextLine();
@@ -82,8 +82,8 @@ public class Customer {
         } while (!checkDate);
 
         //Import customer type
-//                    System.out.println("Enter customer type:");
-//                    String customerType = scanner.nextLine();
+//      System.out.println("Enter customer type:");
+//      String customerType = scanner.nextLine();
         String customerType = "Normal";
 
         CaseStudy.Task01.Customer customer = new CaseStudy.Task01.Customer(customerId, fullName, numberPhone, email, dateOfBirth, customerType);

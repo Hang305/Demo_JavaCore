@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 public class BookController {
 
     private List<Book> listBooks;
+    List<String> listProduct;
+
 
     public BookController() {
         this.listBooks = new ArrayList<>();
@@ -25,8 +27,8 @@ public class BookController {
     }
 
     //Show list information product
-    public void showListInformationBook() {
-        this.listBooks.forEach(book -> book.getInformation());
+    public void showListInformationBook(List<String> listBook) {
+        this.listBooks.forEach(book -> book.getInformation(listBook));
     }
 
     //
