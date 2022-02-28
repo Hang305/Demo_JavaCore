@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChildrenToyController {
-    private List<ChildrenToy> listToys;
+    public List<ChildrenToy> listToys;
 
     public ChildrenToyController() {
         this.listToys = new ArrayList<>();

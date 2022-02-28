@@ -16,19 +16,19 @@ public class Order {
     private long unit;
     private long total;
 
-    Customer customer = new Customer();
-    ProductController productController = new ProductController();
-
-    public Order(String orderId, String customerid, String productId, Integer quantity, String dateBuy) {
+    public Order(String orderId, String customerId, String productId, Integer quantityBuy, String buyDate) {
         this.orderId = orderId;
-        this.customerId = customerid;
+        this.customerId = customerId;
         this.productId = productId;
-        this.quantityBuy = quantity;
-        this.buyDate = dateBuy;
+        this.quantityBuy = quantityBuy;
+        this.buyDate = buyDate;
     }
 
     public Order() {
 
+    }
+
+    public Order(String s, String s1, String s2, String s3, String s4, String s5) {
     }
 
     public String getOrderId() {
@@ -89,12 +89,8 @@ public class Order {
     }
 
     public void showInformation(List<String> listOrders) {
-        this.productId = listOrders.get(2);
-        System.out.println(this.productId);
-
-        System.out.println(" Order ID: " + listOrders.get(0) + "\n Customer id: " + listOrders.get(1) + "\n Product id: "
-                + listOrders.get(2) + "\n Date buy:" + listOrders.get(3) + "\n Unit: " + getUnitOfProduct(listOrders.get(2))
-                + "\n Quantity buy: " + listOrders.get(5) + "\n Total: " + unit * quantityBuy);
+        System.out.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20%\n",listOrders.get(0) , listOrders.get(1) ,listOrders.get(2) ,listOrders.get(3) ,listOrders.get(4)
+               , listOrders.get(5), unit * quantityBuy);
     }
 
     @Override
@@ -107,16 +103,11 @@ public class Order {
                 ", buyDate=" + buyDate +
                 ", unit=" + unit +
                 ", total=" + total +
-                ", customer=" + customer +
                 '}';
     }
 
     public long getUnitOfProduct(String productId) {
 
-        if (productId == productController.getProductId(productId)){
-            unit = productController.getUnitByProductId(productId);
-        }
         return unit;
-
     }
 }

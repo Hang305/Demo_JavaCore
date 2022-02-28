@@ -20,16 +20,11 @@ public class Order {
     public static final String REGEX_EMAIL = "^\\w+@+\\w+(\\.\\w+){1,2}$";
     public static final String REGEX_ORDERID = "^\\DH+-+\\d{4}$";
     OrderController orderController = new OrderController();
-    ProductController productController = new ProductController();
-    long unit;
-
     public void showInformation() {
         System.out.println("Show information orders:");
 
         //Read file from Book.csv
         List<String> listOrder = OrderFile.readFile(FILE_ORDER);
-//        String productId = productController.getProductId(listOrder.get(2));
-//        unit = productController.getUnitByProductId(productId);
         orderController.showInformationOrder(listOrder);
 
     }

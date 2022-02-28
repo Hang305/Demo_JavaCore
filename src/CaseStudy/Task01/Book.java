@@ -29,9 +29,11 @@ public class Book extends Product {
 
     @Override
     public void getInformation( List<String> listBook) {
-        System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
-                "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publisher year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
-                "\n Publisher date: " + sdf.format(this.getPublishDate()) + "\n Reprints: " + this.getReprints());
+        System.out.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", listBook.get(0) ,listBook.get(1) , listBook.get(2) ,listBook.get(3) ,
+                listBook.get(4) , listBook.get(5) ,listBook.get(6) ,listBook.get(7), listBook.get(8),listBook.get(9));
+//        System.out.println("Product ID: " + this.getProductId() + "\n Product name: " + this.getProductName() + "\n Quantity: " + this.getCategoryName() + "\n Unit: " + this.getUnit() +
+//                "\n Category name:" + this.getCategoryName() + "\n Publisher:" + this.getPublisher() + "\n Publisher year: " + this.getPublishYear() + "\n Author: " + this.getAuthor() +
+//                "\n Publisher date: " + sdf.format(this.getPublishDate()) + "\n Reprints: " + this.getReprints());
     }
 
     @Override

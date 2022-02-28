@@ -24,7 +24,6 @@ public class Customer {
     public Customer() {
 
     }
-//    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     public void showInformation(){
         System.out.println("Customer ID: " + this.customerId + "\n Full name: " + this.fullName + "\n Phone number: " + this.phoneNumber + "\n Email: " +this.email+
                 "\n Birthday:" +this.birthDate + "\n Customer type:" + this.customerType );

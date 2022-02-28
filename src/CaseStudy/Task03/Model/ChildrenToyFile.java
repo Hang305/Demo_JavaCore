@@ -1,5 +1,6 @@
 package CaseStudy.Task03.Model;
 
+import CaseStudy.Task01.Book;
 import CaseStudy.Task01.ChildrenToy;
 import CaseStudy.Task03.Common.Read_Write;
 
@@ -8,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ChildrenToyFile {
@@ -38,14 +40,15 @@ public class ChildrenToyFile {
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
             String[] result;
+            System.out.format("%-20s%-20s%-20s%-20s%-25s%-20s%-20s%-20s%-20s\n", "Product id", "Product name", "Quantity", "Unit", "Category name",
+                    "Origin", "Brand", "Supplier", "User manual");
+
             while ((line = bufferedReader1.readLine()) != null) {
                 result = line.split(",");
-                String check;
-                System.out.println(" ProductID: " + result[0] + "\n Product name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
-                        "\n Category name: " + result[4] + "\n Origin: " + result[5] + "\n Brand: " + result[6] + "\n Supplier: " + result[7] +
-                        "\n User manual: " + result[8]);
 
-                System.out.println("-----------------");
+                System.out.format("%-20s%-20s%-20s%-20s%-25s%-20s%-20s%-20s%-20s\n", result[0],result[1] , result[2] , result[3] ,
+                        result[4] ,result[5] , result[6] , result[7] , result[8]);
+
             }
 
         } catch (FileNotFoundException e) {

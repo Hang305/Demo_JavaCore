@@ -30,10 +30,8 @@ public class SchoolSupplies extends Product {
 
     @Override
     public void getInformation( List<String> listSchool) {
-
-        System.out.println(" Product ID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
-                "\n Category name: "+ this.getCategoryName()+ "\n Origin: " + this.getOrigin()+ "\n Brand: "+ this.getBrand()+ "\n Supplier: "+ this.getSupplier()+
-                "\n User manual: " + this.getUserManual() + "\n Color: "+ this.getColor()+ "\n Material: "+ this.getMaterial()+ "\n Size: "+ this.getSize());
+        System.out.format("%-15s%-15s%-15s%-15s%-25s%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n",listSchool.get(0) , listSchool.get(1) ,listSchool.get(2) ,listSchool.get(3) ,listSchool.get(4)
+                , listSchool.get(5), listSchool.get(6) ,listSchool.get(7), listSchool.get(8), listSchool.get(9), listSchool.get(10), listSchool.get(11));
     }
 
     @Override
@@ -45,7 +43,6 @@ public class SchoolSupplies extends Product {
             return 0.07;
         } else
             return 0.01;
-
     }
 
     public String getOrigin() {

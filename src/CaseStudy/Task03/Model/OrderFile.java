@@ -2,6 +2,7 @@ package CaseStudy.Task03.Model;
 
 
 import CaseStudy.Task01.Order;
+import CaseStudy.Task02.Control.ProductController;
 import CaseStudy.Task03.Common.Read_Write;
 
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ public class OrderFile {
         //INPUT
         for (Order listBills : order) {
             line = listBills.getOrderId() + COMMA + listBills.getCustomerId() + COMMA + listBills.getProductId() + COMMA + listBills.getBuyDate()
-                    + COMMA + listBills.getUnit() + COMMA+ listBills.getQuantityBuy() + COMMA+ listBills.getTotal();
+                    + COMMA + listBills.getUnit() + COMMA + listBills.getQuantityBuy() + COMMA + listBills.getTotal();
 
             Read_Write.writeFile(pathFile, line);
         }
@@ -37,14 +38,19 @@ public class OrderFile {
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
-            String[] result;
-
+            System.out.format("%-20s%-20s%-20s%-20s%-25s%-20s%-20s\n", "Order Id", "Customer Id", "Product Id", "Date buy", "Unit",
+                    "Quantity buy", "Total");
             while ((line = bufferedReader1.readLine()) != null) {
-                List<String> items = Arrays.asList(line.split(","));
+                listLine = Arrays.asList(line.split(","));
+
                 Order listOrder = new Order();
-                listOrder.showInformation(items );
-                System.out.println("-----------------");
+                listOrder.showInformation(listLine);
+
+//                ProductController productController = new ProductController();
+//                productController.searchProductId(listLine.get(2));
+//                System.out.println("-----------------");
             }
+
 
         } catch (FileNotFoundException e) {
             System.out.println("Not file found!");

@@ -1,28 +1,39 @@
 package CaseStudy.Task02.Control;
 
+import CaseStudy.Task01.Book;
+import CaseStudy.Task01.ChildrenToy;
 import CaseStudy.Task01.Product;
+import CaseStudy.Task01.SchoolSupplies;
+import CaseStudy.Task03.Model.BookFile;
+import CaseStudy.Task03.Model.ChildrenToyFile;
+import CaseStudy.Task03.Model.OrderFile;
+import CaseStudy.Task03.Model.SchoolSuppliesFile;
 
+import javax.print.attribute.standard.JobKOctets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static CaseStudy.Task04.View.Book.FILE_BOOK;
+import static CaseStudy.Task04.View.ChildrenToy.FILE_CHILDRENTOY;
+import static CaseStudy.Task04.View.Order.FILE_ORDER;
+import static CaseStudy.Task04.View.SchoolSupplies.FILE_SCHOOLSUPPLIES;
+import static java.util.List.*;
+
 public class ProductController {
 
-    private List<Product> listProducts;
+    public List<Product> listProducts;
     BookController bookController = new BookController();
     ChildrenToyController toyController = new ChildrenToyController();
     SchoolSuppliesController schoolController = new SchoolSuppliesController();
     long unit;
+    List<Product> listResult = new ArrayList<>();
 
 
     public ProductController() {
         this.listProducts = new ArrayList<>();
     }
-
-
-//    public void showListInformationProduct(List<String> list) {
-//        this.listProducts.forEach(product -> product.getInformation());
-//    }
 
     public List<Product> getListProducts() {
         return this.listProducts;
@@ -33,62 +44,29 @@ public class ProductController {
     }
 
     //Search by product id
-    public List<Product> getListProduct(String productId) {
-        List<Product> listResult = new ArrayList<>();
-        for (Product listProduct : bookController.getListBook()){
-            if (listProduct.getProductId().contains(productId)){
-                listResult.add(listProduct);
-            }
+    public Product searchProductId(String productId) {
+        List<Object> listResult = new ArrayList<>();
+        List<String> listBooks = BookFile.readFile(FILE_BOOK);
+        List<String> listToys = ChildrenToyFile.readFile(FILE_CHILDRENTOY);
+        List<String> listSchools = SchoolSuppliesFile.readFile(FILE_SCHOOLSUPPLIES);
+        for (String items : listBooks) {
+            listResult.add(items);
         }
-        for (Product listProduct : toyController.getListToy()){
-            if (listProduct.getProductId().contains(productId)){
-                listResult.add(listProduct);
-            }
+        for (String items : listToys) {
+            listResult.add(items);
         }
-        for (Product listProduct : schoolController.getListSchools()){
-            if (listProduct.getProductId().contains(productId)){
-                listResult.add(listProduct);
-            }
+        for (String items: listSchools){
+            listResult.add(items);
         }
-        return listResult;
-    }
+        for (Object item : listResult){
+            Product product = (Product) item;
+            if (item.equals(product.getProductId())){
 
-    //Get product id
-    public String  getProductId (String productId){
-        String  result ="";
-        for (Product listProduct : bookController.getListBook()){
-            if (listProduct.getProductId() == productId){
-                result = productId;
-               return result;
+                return product;
             }
-            break;
         }
-        for (Product listProduct : toyController.getListToy()){
-            if (listProduct.getProductId()== productId){
-                result = productId;
-                return result;
-            }
-            break;
-        }
-        for (Product listProduct : schoolController.getListSchools()){
-            if (listProduct.getProductId()==productId){
-                result = productId;
-                return result;
-            }
-            break;
-        }
-        return  result;
-    }
+        return null;
 
-    //get unit from product id
-    public Long getUnitByProductId(String productId){
-        if (this.getListProduct(productId)!=null ){
-            for (Product item : getListProduct(productId)){
-                unit = item.getUnit();
-                return unit;
-            }
-        }
-        return unit;
     }
 
 }

@@ -29,21 +29,23 @@ public class BookFile {
 
         //OUTPUT
         List<String> listLine = new ArrayList<>();
+
         try {
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
             String[] result;
-
+            System.out.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Product id", "Product name", "Quantity", "Unit", "Category name",
+                    "Publisher", "Publisher year", "Author", "Publisher date", "Reprints");
             while ((line = bufferedReader1.readLine()) != null) {
                 result = line.split(",");
-                System.out.println(" Product ID: " + result[0] + "\n Product name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
-                        "\n Category name:" + result[4] + "\n Publisher:" + result[5] + "\n Publisher year: " + result[6] + "\n Author: " + result[7] +
-                        "\n Publisher date: " + result[8] + "\n Reprints: " + result[9]);
+                System.out.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", result[0] , result[1] , result[2] ,result[3] , result[4] , result[5] ,result[6] ,result[7], result[8],result[9]);
 
-                System.out.println("-----------------");
+//                System.out.println(" Product ID: " + result[0] + "\n Product name: " + result[1] + "\n Quantity: " + result[2] + "\n Unit: " + result[3] +
+//                        "\n Category name:" + result[4] + "\n Publisher:" + result[5] + "\n Publisher year: " + result[6] + "\n Author: " + result[7] +
+//                        "\n Publisher date: " + result[8] + "\n Reprints: " + result[9]);
+//                System.out.println("-----------------");
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

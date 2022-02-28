@@ -15,7 +15,6 @@ public class ChildrenToy extends Product {
 
     @Override
     public void getInformation(List<String> listToy) {
-
         System.out.println(" ProductID: " + this.getProductId()+  "\n Product name: " + this.getProductName() + "\n Quantity: "+ this.getQuantity() + "\n Unit: "+ this.getUnit() +
                 "\n Category name: "+ this.getCategoryName()+ "\n Origin: " + this.getOrigin()+ "\n Brand: "+ this.getBrand()+ "\n Supplier: "+ this.getSupplier()+
                 "\n User manual: " + this.getUserManual());

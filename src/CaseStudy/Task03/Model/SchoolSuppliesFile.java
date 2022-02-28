@@ -39,14 +39,17 @@ public class SchoolSuppliesFile {
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader1 = new BufferedReader(fileReader);
             String line = "";
-
+            System.out.format("%-15s%-15s%-15s%-15s%-25s%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Product id", "Product name", "Quantity", "Unit", "Category name",
+                    "Origin", "Brand", "Supplier", "User manual", "Color", "material", "size");
             while ((line = bufferedReader1.readLine()) != null) {
                 List<String> result = new ArrayList<>(Arrays.asList(line.split(",")));
+                SchoolSupplies listSchools = new SchoolSupplies();
+                listSchools.getInformation(result);
 
-                for (String item: result){
-                    System.out.println(item );
-                }
-                System.out.println("-----------------");
+//                for (String item: result){
+//                    System.out.println(item);
+//                }
+//                System.out.println("-----------------");
             }
 
         } catch (FileNotFoundException e) {

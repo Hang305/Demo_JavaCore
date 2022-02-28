@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SchoolSuppliesController {
-    private List<SchoolSupplies> listSchools;
+    public List<SchoolSupplies> listSchools;
 
     public SchoolSuppliesController() {
         this.listSchools = new ArrayList<>();

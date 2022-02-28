@@ -1,7 +1,10 @@
 package CaseStudy.Task02.Control;
 
+import CaseStudy.Task01.Book;
 import CaseStudy.Task01.Customer;
 import CaseStudy.Task01.Order;
+import CaseStudy.Task03.Model.OrderFile;
+import com.sun.source.tree.IfTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,16 +31,7 @@ public class OrderController extends Order {
     }
 
     public void showInformationOrder(List<String> listOrder) {
-//        this.productId = listOrder.get(2);
         this.listOrders.forEach(order -> order.showInformation(listOrder));
-
-
-    }
-
-    public Long getUnitPrice() {
-        productController.getProductId(this.productId);
-        return unitPrice;
-
     }
 
     public void setUnitPrice(Long unitPrice) {

@@ -1,16 +1,18 @@
 package CaseStudy.Task02.Control;
 
 import CaseStudy.Task01.Book;
+import CaseStudy.Task03.Model.BookFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static CaseStudy.Task04.View.Book.FILE_BOOK;
+
 public class BookController {
 
-    private List<Book> listBooks;
+    public List<Book> listBooks;
     List<String> listProduct;
-
 
     public BookController() {
         this.listBooks = new ArrayList<>();
@@ -31,10 +33,14 @@ public class BookController {
         this.listBooks.forEach(book -> book.getInformation(listBook));
     }
 
-    //
+//    //
+//    public List<String> getListBooks() {
+//        List<String> listBook=  BookFile.readFile(FILE_BOOK);
+//        return listBook;
+//    }
     public List<Book> getListBook(){
-        return this.listBooks;
-    }
+        return this.listBooks;}
+
     @Override
     public String toString() {
         return "BookController{" +
